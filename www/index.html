@@ -21,17 +21,7 @@
         <!-- start menu -->
         <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" src="js/megamenu.js"></script>
-        <script>$(document).ready(function () {
-                $(".megamenu").megamenu();
-                loadPage('body.html');
-            });
-        loadPage=function(url){
-            $.get(url,{},function(data){
-                $('.body_content').html(data);
-            });
-        }    
-       // $(document).ready();
-        </script>
+        <script type="text/javascript" src="js/ajax_load_page.js"></script>
         <script src="js/menu_jquery.js"></script>
         <script src="js/simpleCart.min.js"></script>
         <script src="js/responsiveslides.min.js"></script>
@@ -46,15 +36,15 @@
                 <div class="header_top-sec">
                     <div class="top_right">
                         <ul>
-                            <li><a href="contact.php">help</a></li>|
-                            <li><a href="contact.php">Contact</a></li>|
-                            <li><a href="login.php">Track Order</a></li>
+                            <li><a onclick="return false" onmousedown="loadPage('account.html')">help</a></li>|
+                            <li><a onclick="return false" onmousedown="loadPage('contact.html')">Contact</a></li>|
+                            <li><a onclick="return false" onmousedown="loadPage('login.html')">Track Order</a></li>
                         </ul>
                     </div>
                     <div class="top_left">
                         <ul>
                             <li class="top_link>Email:<a href="#">info@uza.com</a></li>|
-                            <li class="top_link"><a href="account.php">My Account</a></li>					
+                            <li class="top_link"><a onclick="return false" onmousedown="loadPage('login.html')">My Account</a></li>					
                         </ul>
 
                     </div>
@@ -65,14 +55,14 @@
         <div class="header_top">
             <div class="container">
                 <div class="logo">
-                    <a href="index.php"><img src="img/logo.png" alt=""/></a>			 
+                    <a onclick="return false" onmousedown="loadPage('index.html')"><img src="img/logo.png" alt=""/></a>			 
                 </div>
                 <div class="header_right">	
                     <div class="login">
                         <a onclick="return false" onmousedown="loadPage('login.html')">LOGIN</a>
                     </div>
                     <div class="cart box_1">
-                        <a href="cart.php">
+                        <a onclick="return false" onmousedown="loadPage('cart.html')">
                             <h3> <span class="simpleCart_total">0.00Tsh</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span> items)<img src="img/bag.png" alt=""></h3>
                         </a>	
                         <p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
@@ -90,10 +80,10 @@
                 <div class="menu_sec">
 
                     <ul class="megamenu skyblue">
-                        <li class="active grid"><a class="color1" href="index.php">Home</a></li>
-                        <li class="grid"><a class="color2" href="electronics.php">electronics</a></li>
-                        <li><a class="color4" href="books.php">books</a></li>				
-                        <li><a class="color5" href="clothing.php">clothing</a></li>				
+                        <li class="active grid"><a class="color1" onclick="return false" onmousedown="loadPage('index.html')">Home</a></li>
+                        <li class="grid"><a class="color2" onclick="return false" onmousedown="loadPage('electronics.html')">electronics</a></li>
+                        <li><a class="color4" onclick="return false" onmousedown="loadPage('books.html')">books</a></li>				
+                        <li><a class="color5" onclick="return false" onmousedown="loadPage('clothing.html')">clothing</a></li>				
 
                     </ul> 
                     <div class="search">
