@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var SITE_URL = 'http://uza.inetstz.com/uza_application/index.php?';
 var app = {
     // Application Constructor
     initialize: function() {
@@ -49,3 +50,34 @@ var app = {
 };
 
 app.initialize();
+
+uza = {
+    get_remote: function (param, callback) {
+	$.ajax({
+	    cache: true,
+	    url: SITE_URL + $.param(param),
+	    dataType: 'jsonp',
+	    success: function (data) {
+		callback.call(this, data);
+	    }
+	});
+    }
+};
+/**
+ * how to call it
+ */
+
+/*
+ * Example
+ * 
+var param={  pg:'login',
+             method:'testing',
+	     user:'mytetinsdata',
+	     id:'14'
+	   }
+  uza.get_remote(param,function(data){
+        alert(data);
+        console.log(data); 
+ 
+  });
+ */
