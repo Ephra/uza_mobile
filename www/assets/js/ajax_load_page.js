@@ -27,7 +27,7 @@ user_login = function () {
 
         $.ajax({
             type: "POST",
-            url: "single_product.html",
+            url: "http://inetstz.com/uza_application/index.php",
             data: userInput,
             success: function () {
                 $('.success').fadeIn(200).show();
