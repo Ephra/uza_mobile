@@ -64,7 +64,6 @@ user_register = function () {
             url: "single_product.html",
             data: userInput,
             success: function () {
-                
                 $('.success').fadeIn(200).show();
                 $('.error').fadeOut(200).hide();
             }
@@ -72,9 +71,6 @@ user_register = function () {
     }
     return false;
 };
-
-
-
 
 
 
