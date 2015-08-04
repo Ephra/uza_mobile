@@ -7,7 +7,7 @@
 <div class="login_sec">
 	 <div class="container">
 		 <ol class="breadcrumb">
-		  <li><a href="index.html">Home</a></li>
+                     <li><a href="javascript:void(0)" onmousedown="loadPage('')">Home</a></li>
 		  <li class="active">Login</li>
 		 </ol>
 		 <h2>Login</h2>
@@ -18,8 +18,9 @@
 					 <h5>Email:</h5>	
 					 <input type="text" id="email" value="">
 					 <h5>Password:</h5>
-					 <input type="password"  id="password" value="">					
-                                         <button class="btn btn-success" type="button"  onmousedown="javascript:login('http://inetstz.com/uza_application/index.php');" name="btnLogin">Login</button>
+					 <input type="password"  id="password" value="">
+                                         <div id="ajax_ad_results"></div>
+                                         <button class="btn btn-success" type="button"  onmousedown="login();" name="btnLogin">Login</button>
 					  <a href="#" >Forgot Password ?</a>
 				 </form>				 
 		 </div>
@@ -36,18 +37,26 @@
 	 <div class="container">
 	 </div>
 </div>
-<script >
-function login(url){
-    var datastring = $('#login_form').serialize();
+<script src="./assets/js/index.js"></script>
+<script  type='text/javascript'>
+    
+
+function login(){
+    var email = $('#email').val();
+    var pwd = $('#password').val();
    
-    $.ajax({
-	    cache: true,
-	    url: "http://inetstz.com/?js=&datastring=" + datastring +"",
-	    dataType: 'jsonp',
-	    success: function(data) {
-                console.log(data);
-	    }
-	});
+   var param={  
+             pg:'login',
+             method:'process_login',
+             email:email,
+             password:pwd
+	   }
+  uza.get_remote(param,function(data){
+       
+        console.log(data); 
+ 
+  });
+    
           
 
 }
