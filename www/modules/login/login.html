@@ -27,7 +27,7 @@
 		  <div class="col-md-6 login-right">
 			  	<h3>NEW REGISTRATION</h3>
 				<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-				<a class="acount-btn" href="account.html">Create an Account</a>
+                                <a class="acount-btn" href="javascript:void(0)" onmousedown="loadPage('././categories/account/account.html')">Create an Account</a>
 		 </div>
 		 <div class="clearfix"></div>
 	 </div>
@@ -52,7 +52,7 @@ function login(){
              password:pwd
 	   }
   uza.get_remote(param,function(data){
-       
+         
         console.log(data); 
  
   });

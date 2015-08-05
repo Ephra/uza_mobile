@@ -12,7 +12,7 @@
 
             <div class="registration_form">
                 <!-- Form -->
-                <form id="registration_form" action="account.php" method="post">
+                <form id="registration_form">
                     <div>
                         <label>
                             <input placeholder="first name:" type="text"  id="fname" name="first_name" >
@@ -49,7 +49,7 @@
                     </div>	
 
                     <div>
-                        <input type="submit" value="create an account" name="btn_register" id="btn_register">
+                        <button class="btn btn-success" onmousedown="register()" >create an account</button>
                     </div>
 
                     <span class="error" style="display:none"> Fill all the fields required</span>
@@ -63,7 +63,7 @@
             <h2>existing user</h2>
             <div class="registration_form">
                 <!-- Form -->
-                <form id="registration_form" action="contact.php" method="post">
+                <form id="registration_form_2" >
                     <div>
                         <label>
                             <input placeholder="email:" type="email" id="email" >
@@ -75,7 +75,7 @@
                         </label>
                     </div>						
                     <div>
-                        <input type="submit" value="sign in" id="register-submit">
+                        <input  value="sign in" id="register-submit">
                     </div>
                     <div class="forget">
                         <a href="#">forgot your password</a>
@@ -97,5 +97,29 @@
     <!---->
 
 </div>
+<script type="text/javascript">
+    function register() {
+        alert('ok');
+        var fname=$('#fname').val();
+        var lname=$('#lname').val();
+        var pwd=$('#password').val();
+        var email=$('#email').val();
+        var location=$('#location').val();
+        var param= {
+            pg:'register',
+            method:'register_client',
+            fname:fname,
+            lname:lname,
+            password:pwd,
+            email:email,
+            location:location
+        }
+        
+        uza.get_remote(param,function(data){
+            
+            console.log(data);
+        });
+    }
+</script>
 
 
