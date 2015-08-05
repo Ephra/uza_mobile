@@ -1,0 +1,101 @@
+
+
+<!---->
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Account</li>
+    </ol>
+    <div class="registration">
+        <div class="registration_left">
+            <h2>new user? <span> create an account </span></h2>
+
+            <div class="registration_form">
+                <!-- Form -->
+                <form id="registration_form" action="account.html" method="post">
+                    <div>
+                        <label>
+                            <input placeholder="first name:" type="text"  id="fname" name="first_name" >
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="last name:" type="text" id="lname" name="last_name" >
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="email address:" type="email" name="email"  id="email">
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <input placeholder="password" type="password" name="password" id="password" >
+                        </label>
+                    </div>	
+
+                    <div>
+                        <label>
+                            <input placeholder="Phone Number:" type="text" name="phone_number" id="phone_number">
+                        </label>
+                    </div>					
+
+                    <div>
+
+                        <label>
+                            <input placeholder="location" type="text" name="location" id="location">
+                        </label>
+                    </div>	
+
+                    <div>
+                        <input type="submit" value="create an account" name="btn_register" id="btn_register">
+                    </div>
+
+                    <span class="error" style="display:none"> Fill all the fields required</span>
+                    <span class="success" style="display:none"> Registration Successfully</span>
+
+                </form>
+                <!-- /Form -->
+            </div>
+        </div>
+        <div class="registration_left">
+            <h2>existing user</h2>
+            <div class="registration_form">
+                <!-- Form -->
+                <form id="registration_form" action="contact.html" method="post">
+                    <div>
+                        <label>
+                            <input placeholder="email:" type="email" id="email" >
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="password" type="password" id="password" >
+                        </label>
+                    </div>						
+                    <div>
+                        <input type="submit" value="sign in" id="register-submit">
+                    </div>
+                    <div class="forget">
+                        <a href="#">forgot your password</a>
+                    </div>
+
+                    <span class="error" style="display:none"> Make sure password or email is correct </span>
+                    <span class="success" style="display:none">Login Successfully</span>
+                </form>
+                <!-- /Form -->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- end registration -->
+    <div class="footer-content">
+
+    </div>
+    <!---->
+
+</div>
+
+
