@@ -4,7 +4,6 @@ $(document).ready(function () {
     loadPage('body.html');
 });
 loadPage = function (url) {
-
     $.get(url, {pg: 'login', file: 'login'}, function (data) {
         $('.body_content').html(data);
     });
