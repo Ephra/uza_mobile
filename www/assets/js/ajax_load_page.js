@@ -50,9 +50,9 @@ user_register = function () {
     var location = $('#location').val();
     var user_type = $('#user_type').val();
 
-    var userInput = 'fname=' + user_fname + '&lname=' + user_lname + '&email=' + user_email + '&password=' + user_password + '&phone=' + user_phone + '&location=' + location;
+    var userInput = 'fname=' + user_fname + '&lname=' + user_lname + '&email=' + user_email + '&password=' + user_password + '&phone=' + user_phone + '&location=' + location + '&user_type=' + user_type;
 
-    if (fname == '' && lname == '' && email=='' && password==''&& phone=='' && location=='' ) {
+    if (fname == '' && lname == '' && email=='' && password==''&& phone=='' && location=='' && user_type=='' ) {
         $('.success').fadeOut(200).hide();
         $('.error').fadeOut(200).show();
 
