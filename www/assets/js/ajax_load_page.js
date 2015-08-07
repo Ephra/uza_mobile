@@ -26,7 +26,7 @@ user_login = function () {
 
         $.ajax({
             type: "POST",
-            url: "http://inetstz.com/uza_application/index.php",
+            url: "http://inetstz.com/uza_application/index.html",
             data: userInput,
             success: function () {
                 $('.success').fadeIn(200).show();
@@ -63,6 +63,7 @@ user_register = function () {
             url: "single_product.html",
             data: userInput,
             success: function () {
+                
                 $('.success').fadeIn(200).show();
                 $('.error').fadeOut(200).hide();
             }
@@ -70,6 +71,9 @@ user_register = function () {
     }
     return false;
 };
+
+
+
 
 
 
