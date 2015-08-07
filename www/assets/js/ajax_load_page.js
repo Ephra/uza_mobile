@@ -46,8 +46,9 @@ user_register = function () {
     var lname = $('#lname').val();
     var email = $('#email').val();
     var password = $('#password').val();
-    var phone = $('#phone_number').val();
+    var phone = $('#phone').val();
     var location = $('#location').val();
+    var user_type = $('#user_type').val();
 
     var userInput = 'fname=' + user_fname + '&lname=' + user_lname + '&email=' + user_email + '&password=' + user_password + '&phone=' + user_phone + '&location=' + location;
 
