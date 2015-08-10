@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var SITE_URL = 'http://uza.inetstz.com/uza_application/index.php?';
+var SITE_URL = 'http://192.168.43.242/uza_application/index.php?';
 var app = {
     // Application Constructor
     initialize: function() {

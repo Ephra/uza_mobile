@@ -1,0 +1,138 @@
+<?php 
+
+// set database server access variables: 
+$host = "localhost"; 
+$user = "root"; 
+$pass = ""; 
+$db = "896128_uza";
+
+// open connection 
+$connection = mysql_connect($host, $user, $pass) or die ("Unable to connect!"); 
+
+// select database 
+mysql_select_db($db) or die ("Unable to select database!"); 
+
+// create query 
+$query = "SELECT * FROM product"; 
+
+// execute query 
+$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error()); 
+
+// see if any rows were returned 
+if (mysql_num_rows($result) > 0) { 
+    // yes 
+    // print them one after another 
+    echo "<table cellpadding=10 border=1>"; 
+    while($row = mysql_fetch_row($result)) { 
+        echo "<tr>"; 
+        echo "<td>"."<center>".$row[7]."<br>".$row[2]."<br>".$row[0]."<br>".$row[4]."<br>".$row[8]."</center>"."</td>"; 
+        echo "<td>" . $row."</td>"; 
+        echo "<td>".$row."</td>"; 
+        echo "</tr>"; 
+    } 
+    echo "</table>"; 
+} 
+else { 
+    // no 
+    // print status message 
+    echo "No rows found!"; 
+} 
+
+// free result set memory 
+mysql_free_result($result); 
+
+// close connection 
+mysql_close($connection); 
+
+?>
+
+<!--
+<?php
+$database="login";
+$con=mysql_connect("localhost","root","");
+if(!$con)
+{
+  die('could not connect'.mysql_error());
+}
+mysql_select_db("$database",$con);
+echo "Connection established";
+$query = ("SELECT * FROM Books");
+                $result = mysql_query($query);
+                while($dog = mysql_fetch_array($result)){
+                    $petname = $dog ['BookName'];
+                    echo "<P>" . $dog['BookName'] ."</P>";
+                    echo "<img src='".$dog['Photo']."' alt='dog' width='200' height='200' />"; 
+                }
+            ?>
+
+
+
+
+
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Insert Product</li>
+    </ol>
+    <div class="registration">
+        <div class="registration_left">
+
+            <div class="registration_form">
+                <form id="registration_form">
+                    <div>
+                        <select id="product_name">
+                            <option value="electronics">Electronics</option>
+                            <option value="books">Books</option>
+                            <option value="men's_fasion">Men's Fashion</option>
+                            <option value="women's_fasion">Women's Fashion</option>
+                        </select>
+                    </div>  
+                    <select id='description'></select>
+ 
+ 
+                   
+                    <div>
+                        <select>
+                            <option value="new">New</option>
+                            <option value="used">Used</option>
+                        </select>
+                    </div>					
+
+
+
+                    <div>
+                        <button class="btn btn-success" onmousedown="product();" >Upload Product</button>
+                    </div>
+
+                    <span class="error" style="display:none"> Fill all the fields required</span>
+                    <span class="success" style="display:none"> Registration Successfully</span>
+
+                </form>
+            </div>
+        </div>
+       
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="footer-content">
+
+    </div>
+    <script type="text/javascript">
+         $('#product_name').change(function(){
+         $.getJSON(
+         'test.php',
+         'product_name='+$('#product_name').val(),
+         function(result){
+         $('#description').empty();
+         $.each(result.result, function(){
+         $('#description').append('<option>'+this['description']+'</option>');
+         });
+         }
+         );
+        });
+    </script>
+
+</div>-->
+
+
