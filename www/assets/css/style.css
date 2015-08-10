@@ -384,7 +384,7 @@ a i.google:hover {
 	margin:3em 0;
 	
 }
-.new-products{
+.new-single_product{
 	border-bottom: 1px solid #eee;
   padding-bottom: 3em;
 }
@@ -810,7 +810,7 @@ ul.tabs-menu li.active a{
 	cursor: pointer;
 	z-index: 999;
 }
-.products-row a:hover{
+.single_product-row a:hover{
 	text-decoration:none;
 }
 .product-img img {
