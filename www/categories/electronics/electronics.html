@@ -1,14 +1,16 @@
 <div class="product-model">	 
 	 <div class="container">
 			<ol class="breadcrumb">
-		  <li><a href="index.html">Home</a></li>
+		  <li><a href="javascript:void(0)" onclick="return false" onmousedown="loadPage('index.html')">Home</a></li>
+
 		  <li class="active">Electronics</li>
 		 </ol>
 			<h2>OUR single_product</h2>			
 		 <div class="col-md-9 product-model-sec">
-                     <a href="single_product.html"><div class="product-grid love-grid">
+                     <a href="javascript:void(0)" id="product_info"><div class="product-grid love-grid">
+
 						<div class="more-product"><span> </span></div>						
-						<div class="product-img b-link-stripe b-animate-go  thickbox">
+						<div class="product-img b-link-stripe b-animate-go  thickbox" id="prodDiv">
 							<img src="././assets/img/p1.jpg" class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">							
@@ -22,12 +24,15 @@
 								<p>ID: SR4598</p>
 								<span class="item_price">890,999.00Tsh</span>								
 								<input type="text" class="item_quantity" value="1" />
-								<input type="button" class="item_add items" value="ADD">
+								<input type="button" onmousedown="products()"class="item_add items" id="add_button" value="ADD">
 							</div>													
 							<div class="clearfix"> </div>
 						</div>
                          </div>	</a>
 					
+<<<<<<< HEAD
+                         
+=======
                          <a href="single_product.html"><div class="product-grid love-grid">
 						<div class="more-product"><span> </span></div>						
 						<div class="product-img b-link-stripe b-animate-go  thickbox">
@@ -49,6 +54,7 @@
 							<div class="clearfix"> </div>
 						</div>
 					</div></a>
+>>>>>>> 2dcd4c6c011df02944d6664ceca92497c309c496
 					
                              <a href="single_product.html"><div class="product-grid love-grid">
 						<div class="more-product"><span> </span></div>						
@@ -75,7 +81,7 @@
                                  <a href="single_product.html"><div class="product-grid love-grid">
 						<div class="more-product"><span> </span></div>						
 						<div class="product-img b-link-stripe b-animate-go  thickbox">
-							<img src=././assets/img/p4.jpg" class="img-responsive" alt=""/>
+							<img src="././assets/img/p4.jpg" class="img-responsive" alt=""/>
 							<div class="b-wrapper">
 							<h4 class="b-animate b-from-left  b-delay03">							
 							<button class="btns"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</button>
@@ -297,6 +303,7 @@
 								$(".tab3 .single-bottom").hide();
 								$(".tab4 .single-bottom").hide();
 								$(".tab5 .single-bottom").hide();
+								$(".tab6 .single-bottom").hide();
 								
 								$(".tab1 ul").click(function(){
 									$(".tab1 .single-bottom").slideToggle(300);
@@ -304,6 +311,7 @@
 									$(".tab3 .single-bottom").hide();
 									$(".tab4 .single-bottom").hide();
 									$(".tab5 .single-bottom").hide();
+									$(".tab6 .single-bottom").hide();
 								})
 								$(".tab2 ul").click(function(){
 									$(".tab2 .single-bottom").slideToggle(300);
@@ -311,23 +319,35 @@
 									$(".tab3 .single-bottom").hide();
 									$(".tab4 .single-bottom").hide();
 									$(".tab5 .single-bottom").hide();
+									$(".tab6 .single-bottom").hide();
 								})
 								$(".tab3 ul").click(function(){
 									$(".tab3 .single-bottom").slideToggle(300);
 									$(".tab4 .single-bottom").hide();
 									$(".tab5 .single-bottom").hide();
+									$(".tab6 .single-bottom").hide();
 									$(".tab2 .single-bottom").hide();
 									$(".tab1 .single-bottom").hide();
 								})
 								$(".tab4 ul").click(function(){
 									$(".tab4 .single-bottom").slideToggle(300);
 									$(".tab5 .single-bottom").hide();
+									$(".tab6 .single-bottom").hide();
 									$(".tab3 .single-bottom").hide();
 									$(".tab2 .single-bottom").hide();
 									$(".tab1 .single-bottom").hide();
 								})	
 								$(".tab5 ul").click(function(){
 									$(".tab5 .single-bottom").slideToggle(300);
+									$(".tab6 .single-bottom").hide();
+									$(".tab4 .single-bottom").hide();
+									$(".tab3 .single-bottom").hide();
+									$(".tab2 .single-bottom").hide();
+									$(".tab1 .single-bottom").hide();
+								})
+								$(".tab6 ul").click(function(){
+									$(".tab6 .single-bottom").slideToggle(300);
+									$(".tab5 .single-bottom").hide();
 									$(".tab4 .single-bottom").hide();
 									$(".tab3 .single-bottom").hide();
 									$(".tab2 .single-bottom").hide();
@@ -354,6 +374,26 @@
 
 					});//]]> 
 					</script>
+
+					<script src="./assets/js/index.js"></script>
+					
+					<script  type='text/javascript'>
+						products = function () {
+						//$('#prodDiv').onload(function () {
+						  //  var image = $('#image').val();
+						    //var param = {image: image,pg:'products',method:'product'};
+						    //uza.get_remote(param, function (data) {
+							//console.log(data);
+							//alert(data.message);
+							//if(data.status='202'){
+
+//							$('#product_info').html(data.message)
+							}
+						    });
+						});
+					    };
+				    $(document).ready(products);
+				</script>
 					 
 	      </div>
 		</div>

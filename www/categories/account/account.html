@@ -16,12 +16,12 @@
                 <form id="registration_form">
                     <div>
                         <label>
-                            <input placeholder="first name:" type="text"  id="fname" name="first_name" >
+                            <input placeholder="first name:" type="text"  id="fname" name="fname" >
                         </label>
                     </div>
                     <div>
                         <label>
-                            <input placeholder="last name:" type="text" id="lname" name="last_name" >
+                            <input placeholder="last name:" type="text" id="lname" name="lname" >
                         </label>
                     </div>
                     <div>
@@ -38,7 +38,7 @@
 
                     <div>
                         <label>
-                            <input placeholder="Phone Number:" type="text" name="phone_number" id="phone_number">
+                            <input placeholder="Phone Number:" type="text" name="phone" id="phone">
                         </label>
                     </div>					
 
@@ -50,7 +50,7 @@
                     </div>	
 
                     <div>
-                        <button class="btn btn-success" onmousedown="register()" >create an account</button>
+                        <button class="btn btn-success" onmousedown="register();" >create an account</button>
                     </div>
 
                     <span class="error" style="display:none"> Fill all the fields required</span>
@@ -101,19 +101,20 @@
 </div>
 <script type="text/javascript">
     function register() {
-        alert('ok');
         var fname=$('#fname').val();
         var lname=$('#lname').val();
-        var pwd=$('#password').val();
         var email=$('#email').val();
+        var password=$('#password').val();
+        var phone=$('#phone').val();
         var location=$('#location').val();
         var param= {
             pg:'register',
             method:'register_client',
             fname:fname,
             lname:lname,
-            password:pwd,
             email:email,
+            password:password,
+            phone:phone,
             location:location
         }
         
