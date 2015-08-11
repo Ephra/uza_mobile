@@ -17,7 +17,7 @@
  * under the License.
  */
 
-var SITE_URL = 'http://uza.inetstz.com/index.php?';
+var SITE_URL = 'http://localhost/uza_application/index.php?';
 var app = {
     // Application Constructor
     initialize: function() {
