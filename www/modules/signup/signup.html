@@ -90,9 +90,16 @@
             phone:phone,
             location:location,
             user_type:user_type
-        }
+        }    
+            NProgress.start();
 	    uza.get_remote(param, function (data) {
 		console.log(data);
+                if(data.status===1){
+                    NProgress.done();
+                    $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
+                    
+                    loadPage('modules/login/login.html');
+                }
 	    });
 	});
     };
