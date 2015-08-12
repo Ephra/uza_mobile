@@ -43,9 +43,10 @@
 	    var email = $('#email').val();
 	    var password = $('#password').val();
 	    var param = {email: email, password: password,pg:'login',method:'authenticate'};
+            NProgress.start();
 	    uza.get_remote(param, function (data) {
 		console.log(data);
-		alert(data.message);
+                NProgress.done();
 	    });
 	});
     };
