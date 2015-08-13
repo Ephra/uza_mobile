@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function () {
+
+                $("#business").selectmenu();
+                $("#status").selectmenu();
+
+            });
+        </script>
+    </head>
+
+
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">product</li>
+        </ol>
+        <div class="registration">
+            <div class="registration_left">
+                <h2><span> Upload a Product </span></h2>
+
+                <div class="registration_form">
+                    <!-- Form -->
+
+                    <form id="registration_form" action="insert_product.html" method="post">
+
+                        <div>
+                            <label>
+                                <input placeholder="Product Title:" type="text" id="title" name="title">
+                            </label>
+                        </div>
+
+                        <div>
+                            <label>
+                                <select id="business">
+                                    <option value="">Business Category</option>
+                                    <option value="">Electronics</option>
+                                    <option value="">Books</option>
+                                    <option value="">Clothes</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input  type="file" id="image" name="image">
+                            </label>
+                        </div>
+
+                        <div>
+                            <label>
+                                <select name="status" id="status" style="width:100px;">
+                                    <option value="condition">Condition</option>
+                                    <option value="new">New</option>
+                                    <option value="used">Used</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <textarea placeholder="Product description:"  name="description" id="description"></textarea>
+                            </label>
+                        </div>
+
+                        <div>
+                            <label>
+                                <input placeholder="Quantity" type="text" name="quantity" id="quantity">
+                            </label>
+                        </div>
+
+                        <div>
+                            <label>
+                                <input placeholder="Price" type="text" name="price" id="price">
+                            </label>
+                        </div>
+
+
+                        <div>
+                            <button class="btn btn-success" onmousedown="register()">Upload a Product</button>
+                        </div>
+
+                        <span class="error" style="display:none"> Fill all the fields required</span>
+                        <span class="success" style="display:none"> Registration Successfully</span>
+
+                    </form>
+                    <!-- /Form -->
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+
+        <!-- end registration -->
+        <div class="footer-content">
+
+        </div>
+        <!---->
+
+    </div>
+
+</html>
+
+
