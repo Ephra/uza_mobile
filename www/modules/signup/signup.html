@@ -44,7 +44,7 @@
                     </div>	
                     <div>
                         <label>
-                            <input placeholder="User Type:" type="text" name="user_type" id="user_type">
+                            <input placeholder="User Type:" type="text" name="level_id" id="level_id">
                         </label>
                     </div>				
 
@@ -79,7 +79,7 @@
         var password=$('#password').val();
         var phone=$('#phone').val();
         var location=$('#location').val();
-        var user_type=$('#user_type').val();
+        var level_id=$('#level_id').val();
         var param= {
             pg:'register',
             method:'register_client',
@@ -89,10 +89,22 @@
             password:password,
             phone:phone,
             location:location,
-            user_type:user_type
-        }
+            level_id:level_id
+        }    
+            NProgress.start();
 	    uza.get_remote(param, function (data) {
 		console.log(data);
+                if(data.status===1){
+                    $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
+                    
+                    NProgress.done();
+                    loadPage('modules/login/login.html');
+                }
+                else if(data.status===0){
+                    $('#ajax_ad_results').html('<div class="alert alert-danger>'+data.message+'</div>"');
+                    
+                    NProgress.done();
+                }
 	    });
 	});
     };

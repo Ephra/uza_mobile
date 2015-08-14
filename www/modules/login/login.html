@@ -1,22 +1,4 @@
 
-<!DOCTYPE html>
-<html>
-
-    <head>
-
-
-        <style>
-            .error{
-                display: none;
-                margin-left: 10px;
-            }
-
-            .error_show{
-                color: red;
-                margin-left: 10px;
-            }
-        </style>
-    </head>
 
     <div class="login_sec">
 
@@ -32,17 +14,18 @@
                 <form id="login_form" name="form1">
                     <div>
                         <h5>Email:</h5>	
-                        <input type="text" id="email"  name="email" required>
-                        <span></span>
+                        <input type="text" id="email" onkeyup="validateEmail();" name="email" required>
+                        <label id="errorPromptEmail"></label>
 
                     </div>
                     <div>
                         <h5>Password:</h5>
-                        <input type="password"   id="password" required>
+                        <input type="password"  onkeyup="validatePassword()" id="password" name="password" required>
+                        <label id="errorPromptPassword"></label>
 
                     </div>
                     <div id="ajax_ad_results"></div>
-                    <button class="btn btn-success" type="button"  onclick="Validate" id="login_button" name="btnLogin">Login</button>
+                    <button class="btn btn-success" type="button"  id="login_button" name="btnLogin">Login</button>
                     <a href="#" >Forgot Password ?</a>
                 </form>				 
             </div>
@@ -64,25 +47,36 @@
 
 
     <script src="./assets/js/index.js"></script>
+     <script src="js/form_validation.js"></script>
 
 
     <script  type='text/javascript'>
 
-
                         login = function () {
 
-                            $('#login_button').mousedown(function () {
-                                var email = $('#email').val();
-                                var password = $('#password').val();
-                                var param = {email: email, password: password, pg: 'login', method: 'authenticate'};
-                                uza.get_remote(param, function (data) {
-                                    console.log(data);
-                                    alert(data.message);
-                                });
-
-
-                            });
-                        };
-                        $(document).ready(login);
-    </script>
+	$('#login_button').mousedown(function () {
+	    var email = $('#email').val();
+	    var password = $('#password').val();
+	    var param = {email: email, password: password,pg:'login',method:'authenticate'};    
+            NProgress.start();
+	    uza.get_remote(param, function (data) {
+		
+                    console.log(data);
+                if(data.status===1){
+                    console.log(data);
+                    
+                    loadPage('modules/login/home.html');
+                    NProgress.done();
+                }
+                else if(data.status===0){
+                    $('#ajax_ad_results').html('<div class="alert alert-danger>'+data.message+'</div>"').fadeOut(7000);
+                    
+                    NProgress.done();
+                }
+	    });
+	});
+    };
+    $(document).ready(login);
+</script>
+   
    

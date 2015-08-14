@@ -22,6 +22,9 @@
         <!-- start menu -->
         <link href="assets/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" src="assets/js/megamenu.js"></script>
+        
+        <script src='assets/node_modules/nprogress/nprogress.js'></script>
+<link rel='stylesheet' href='assets/node_modules/nprogress/nprogress.css'/>
         <script type="text/javascript" src="assets/js/ajax_load_page.js"></script>
         <script src="assets/js/menu_jquery.js"></script>
         <script src="assets/js/simpleCart.min.js"></script>
@@ -60,10 +63,14 @@
                 <div class="logo">
                     <a onclick="return false" onmousedown="loadPage('index.html')"><img src="assets/img/logo.png" alt=""/></a>			 
                 </div>
+         
                 <div class="header_right">	
+                    
                     <div class="login">
+                        
                         <a onclick="return false" href="javascript:void(0)" onmousedown="loadPage('modules/login/login.html')">LOGIN</a>
                     </div>
+                    <a class="acount-btn" href="javascript:void(0)" onmousedown="loadPage('././modules/signup/signup.html')">Create an Account</a>
                     <div class="cart box_1">
                         <a onclick="return false" href="javascript:void(0)" onmousedown="loadPage('cart.html')">
                             <h3> <span class="ssimpleCart_total">0.00Tsh</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span> items)<img src="assets/img/bag.png" alt=""></h3>
