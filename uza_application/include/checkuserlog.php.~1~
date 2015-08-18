@@ -1,0 +1,57 @@
+<?php
+
+/**
+ *  file checkuserlog
+ *
+ *   INNOVATION NETWORK AND SOFTWARE COMPANY
+ *
+ *   @author Ephraim Swilla <swillae1@gmail.com>
+ *
+ *
+ */
+/* -------check if cookie is set----------- */
+if (!isset($_SESSION['id'])) {
+    
+    if (isset($_COOKIE['idCookie']) != '' && isset($_COOKIE['passCookie']) != '') {
+
+        $userID = $_COOKIE['idCookie'];
+        $userPass = $_COOKIE['passCookie'];
+
+
+        $result = user::find_where("id='" . $userID . "' AND password='" . $userPass . "'");
+
+        if (!empty($result)) {
+
+            /* ------user is correct, take user ------- */
+            $user = array_shift($result);
+
+
+            $_SESSION['id'] = $user->id;
+            $_SESSION['username'] = $user->username;
+            $_SESSION['login'] = TRUE;
+
+            $db->query(" UPDATE user SET last_login=now() WHERE id='$userID' ");
+
+            $user_chat = frei_session::find_where("session_id='$userID'");
+            if (empty($user_chat)) {
+                $data = array(
+                    'username' => $user->username,
+                    'time' => time(),
+                    'session_id' => $_SESSION['id'],
+                    'permanent_id' => $user->id + 120,
+                    'status' => 1,
+                    'status_mesg' => 'Available'
+                );
+                $db->insert('frei_session', $data);
+            }
+
+            //  $_SESSION['idx'] = base64_encode("g4p3h9xfn8sq03hs2234$userID"); //this is just a token for security
+
+            /* ------establish cookie------- */
+
+            setcookie("idCookie", $userID, time() + 60 * 60 * 24 * 100, "/"); // Cookie set to expire in about 30 days
+            setcookie("passCookie", $userPass, time() + 60 * 60 * 24 * 100, "/"); // Cookie set to expire in about 30 days
+        }
+    }
+}
+?>

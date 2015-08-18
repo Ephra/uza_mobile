@@ -1,0 +1,47 @@
+<?php
+
+defined('RT') ? NULL : define('RT', $_SERVER['DOCUMENT_ROOT'] . '/project/');
+require(RT . 'include/connection.php');
+require(RT . 'include/function.php');
+require(RT . 'include/time_format.php');
+require(RT . 'include/checkuserlog.php');
+require (RT . 'include/user_agent.php');
+require (RT . 'include/email.php');
+
+$HOME = 'http://localhost/project/';
+
+$AJAX = $HOME . "index.php?isajax=true&";
+
+defined('HOME') ? NULL : define('HOME', $HOME);
+
+if (isset($_SESSION['id'])) {
+
+    $session_user = user::find_by_id($_SESSION['id']);
+    $ses_user = array_shift($session_user);
+}
+/**
+ * ajax loader
+ */
+$LOADER = '<img src="' . $HOME . 'media/images/icon/ajax-loader.gif" >';
+
+if (isset($_GET['isajax'])) {
+
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        include (RT.'include/ajax_post.php');
+        exit();
+    }
+
+    if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')) {
+        /*
+         * Ajax processing is done in here
+         * @Note: We don't need head or body contents in here.
+         */
+
+        include_once(RT.'include/ajax_processor.php');
+        exit();
+    }
+}
+
+?>
