@@ -1,16 +1,259 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+
+
+
+    <div class="login_sec">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="javascript:void(0)" onmousedown="loadPage('')">Home</a></li>
+                <li class="active">Create an Account</li>
+            </ol>
+            <h2>Create an Account</h2>
+            <div class="col-md-6 log">			 
+                <p>Welcome, please enter the following to continue.</p>
+                <p>If you have previously Login with us, <span>click here</span></p>
+                <form id="login_form">
+                    <div class="form-group">
+                       
+                            <input placeholder="first name:" class="form-control" type="text"  id="fname" name="fname" >
+                     
+                    </div>
+                    <div class="form-group">
+                      
+                            <input placeholder="last name:" type="text" class="form-control" id="lname" name="lname" >
+                      
+                    </div>
+
+                    <div class="form-group ">
+                       
+                            <input placeholder="email" type="text" class="form-control" name="email" id="email" >
+                      
+                    </div>
+                    <div class="form-group">
+                       
+                            <input placeholder="password" type="password" class="form-control" name="password" id="password" >
+                       
+                    </div>	
+
+                    <div>
+                        
+                            <input placeholder="Phone Number:" type="text" class="form-control" name="phone" id="phone">
+                       
+                    </div>	
+                    <div class="form-group">
+                      
+                            <input placeholder="User Type:" class="form-control" type="text" name="level_id" id="level_id">
+                        
+                    </div>				
+
+                    <div class="form-group">
+
+                        <label>
+                            <input placeholder="location" class="form-control" type="text" name="location" id="location">
+                        </label>
+                    </div>
+                    <div id="ajax_ad_results"></div>
+                    <button class="btn btn-success" type="submit"   id="register_button" name="btnLogin">Register</button>
+         
+                </form>				 
+            </div>
+            
+		 <div class="right col-md-6">
+			 <h2>existing user</h2>
+			 <div class="registration_form">
+			 <!-- Form -->
+				<form id="registration_form" action="" method="post">
+					<div>
+						<label>
+							<input placeholder="email:" type="email" tabindex="3" required>
+						</label>
+					</div>
+					<div>
+						<label>
+							<input placeholder="password" type="password" tabindex="4" required>
+						</label>
+					</div>						
+					<div>
+						<input type="submit" value="sign in" id="register-submit">
+					</div>
+					<div class="forget">
+						<a href="#">forgot your password</a>
+					</div>
+				</form>
+			 <!-- /Form -->
+			 </div>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+<!---->
+<div class="footer-content">
+    <div class="container">
+    </div>
+</div>
+<script src="./assets/js/index.js"></script>
+
+<script  type='text/javascript'>
+                    var form = $('#login_form');
+                    jQuery(document).ready(function () {
+                        validatordefault.init();
+                    });
+                    form.validate({
+                        rules: {
+                            fname: {
+                                minlength: 3,
+                                required: true
+                            },
+                            lname: {
+                                minlength: 3,
+                                required: true
+                            },
+                            password: {
+                                minlength: 6,
+                                required: true
+                            },
+                            location: {
+                                minlength: 3,
+                                required: true
+                            },
+                            email: {
+                                minlength: 3,
+                                required: true,
+                                email: true
+                            },
+                            user_type: {
+                                required: true
+                            },
+                            phone_number: {
+                                minlength: 10,
+                                required: true,
+                                number: true
+                            }
+                            /*                           name3: {
+                             minlength: 3,
+                             required: true,
+                             notEqualToGroup: ['.distinctname']
+                             }, */
+
+                        },
+                        messages: {
+                            /*
+                             fname: {
+                             minlength: "validate",
+                             required: "validate"
+                             },
+                             lname: {
+                             minlength: 3,
+                             required: true
+                             },
+                             password: {
+                             minlength: 6,
+                             required: true
+                             },
+                             location: {
+                             minlength: 3,
+                             required: true
+                             },
+                             email: {
+                             minlength: 3,
+                             required: true,
+                             email:true
+                             },
+                             user_type: {
+                             required: true
+                             },
+                             phone_number: {
+                             minlength: 10,
+                             required: true,
+                             number : true
+                             }
+                             */
+                        },
+                        submitHandler: function (form) {
+                            /*errorHandler.hide(); */
+                            var fname = $('#fname').val();
+                            var lname = $('#lname').val();
+                            var email = $('#email').val();
+                            var password = $('#password').val();
+                            var phone = $('#phone').val();
+                            var location = $('#location').val();
+                            var level_id = $('#level_id').val();
+                            var param = {
+                                pg: 'register',
+                                method: 'register_client',
+                                fname: fname,
+                                lname: lname,
+                                email: email,
+                                password: password,
+                                phone: phone,
+                                location: location,
+                                level_id: level_id
+                            }
+                            NProgress.start();
+                            uza.get_remote(param, function (data) {
+                                console.log(data);
+                                if (data.status === 1) {
+                                    $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
+
+                                    NProgress.done();
+                                    loadPage('modules/login/login.html');
+                                }
+                                else if (data.status === 0) {
+                                    $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
+
+                                    NProgress.done();
+                                }
+                            });
+                        }
+                    });
+
+
+
+
+
+                    register = function () {
+
+                        $('#register').mousedown(function () {
+                            var fname = $('#fname').val();
+                            var lname = $('#lname').val();
+                            var email = $('#email').val();
+                            var password = $('#password').val();
+                            var phone = $('#phone').val();
+                            var location = $('#location').val();
+                            var level_id = $('#level_id').val();
+                            var param = {
+                                pg: 'register',
+                                method: 'register_client',
+                                fname: fname,
+                                lname: lname,
+                                email: email,
+                                password: password,
+                                phone: phone,
+                                location: location,
+                                level_id: level_id
+                            }
+                            NProgress.start();
+                            uza.get_remote(param, function (data) {
+                                console.log(data);
+                                if (data.status === 1) {
+                                    $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
+
+                                    NProgress.done();
+                                    loadPage('modules/login/login.html');
+                                }
+                                else if (data.status === 0) {
+                                    $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
+
+                                    NProgress.done();
+                                }
+                            });
+                        });
+                    };
+                    $(document).ready(register);
+</script>
+
+
+
