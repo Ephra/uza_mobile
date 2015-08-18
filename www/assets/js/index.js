@@ -133,11 +133,12 @@ uza = {
 	    'method': 'navigations'
 	};
 	this.get_remote(pages, function (data) {
-
+	    console.log(data);
 	});
     }
 };
 user = uza.getCookie('user');
+uza.getNavigationPages();
 
 
 /**
