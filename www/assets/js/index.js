@@ -85,9 +85,10 @@ uza = {
      * @param {type} url
      * @returns {undefined}
      */
-    loadPage: function (url) {
+    loadPage: function (url,param) {
 	NProgress.start();
-	$.get(url, {null: null}, function (data) {
+	window.param = (typeof param === "undefined") ? null : param;
+	$.get(url, param, function (data) {
 	    $('.body_content').html(data);
 	    NProgress.done();
 	});
@@ -130,10 +131,16 @@ uza = {
     getNavigationPages: function () {
 	var pages = {
 	    'pg': 'landing',
-	    'method': 'navigations'
+	    'method': 'get_navigation'
 	};
 	this.get_remote(pages, function (data) {
-	    console.log(data);
+	   // console.log(data);
+	    $.each(data, function (i, val) {
+		//console.log(val);
+		if ($('#' +  val.sales_cat_id).length == 0) {
+		    $('#nav_menu').append('<li id="' + val.sales_cat_id +'" class="active grid"><a class="color1" href="javascript:;" onmousedown="uza.loadPage(\'modules/product/product.html\',{cat_id:\''+val.sales_cat_id +'\',type:\'product\'})">' + val.sales_cat_name+ '</a></li>');
+		}
+	    });
 	});
     }
 };

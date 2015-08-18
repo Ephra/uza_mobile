@@ -34,18 +34,17 @@
                         data:param,
                         type: jsonp,
                         success:function(data){
-    
-    }
-    
+			    
+				  }
 			target: '#output'
 		});
 	});
 
-<form action="www.inetstz.com" method="post" id="myForm">
-    <input type="text" name="name">
-    
-    <input type="file" name="myname"/>
-    <input type="submit" name="submit"/>
+    <form action="www.inetstz.com" method="post" id="myForm">
+	<input type="text" name="name">
+
+       <input type="file" name="myname"/>
+       <input type="submit" name="submit"/>
     </form>
     
     <div id="output"></div>
