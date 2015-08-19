@@ -83,13 +83,12 @@
 		    <!-- script -->					 
 	    </section>
 	   <script type='text/javascript'>
-	   var $title_name;
 		page_design = function () {
 		   $('.title_name').html(name);
 		   uza.get_remote({pg:'products',method:'get_product'},function(data){
 		       console.log(data);
 		   });
-		   uza.get_remote({pg:'landing',method:'get_sub_category',cat_id:cat_id},function(data){
+		   uza.get_remote({pg:'landing',method:'sub_category',cat_id:cat_id},function(data){
 		       console.log(data);
 		   });
 		};

@@ -50,7 +50,9 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+<<<<<<< HEAD:www/js/index.js
 
+<<<<<<< HEAD:platforms/android/assets/www/assets/js/index.js
 app.initialize();
 
 uza = {
@@ -83,3 +85,12 @@ var param={  pg:'login',
  
   });
  */
+=======
+/**
+ * how to call it
+ */
+=======
+>>>>>>> e880ea653887613f47cbd781be17d304ce4d0149:platforms/android/build/intermediates/assets/debug/www/js/index.js
+
+app.initialize();
+>>>>>>> b537ce37048f71cc2a33b65673bac9241bf681f5:platforms/android/build/intermediates/assets/debug/www/js/index.js

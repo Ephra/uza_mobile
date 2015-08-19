@@ -1,7 +1,4 @@
 
-<!------>
-
-<!---->
 <div class="single-sec">
     <div class="container">
         <ol class="breadcrumb">
@@ -222,7 +219,8 @@
                             })
                         });
                     </script>
-                    <!-- script -->					 
+                    <!-- script -->
+                </div>
             </section>
             <section  class="sky-form">
                 <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>DISCOUNTS</h4>
@@ -250,78 +248,32 @@
             <!---->
             <script type="text/javascript" src="js/jquery-ui.min.js"></script>
             <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
-            <script type='text/javascript'>//<![CDATA[ 
-                        $(window).load(function () {
-                            $("#slider-range").slider({
-                                range: true,
-                                min: 0,
-                                max: 400000,
-                                values: [2500, 350000],
-                                slide: function (event, ui) {
-                                    $("#amount").val("Tsh" + ui.values[ 0 ] + " - Tsh" + ui.values[ 1 ]);
-                                }
-                            });
-                            $("#amount").val("Tsh" + $("#slider-range").slider("values", 0) + " - Tsh" + $("#slider-range").slider("values", 1));
 
-                        });//]]>  
 
-            </script>
-            <section  class="sky-form">
-                <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Type</h4>
-                <div class="row row1 scroll-pane">
-                    <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Sofa Cum Beds (30)</label>
-                    </div>
-                    <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Dinner Sets   (30)</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>3+1+1 Sofa Sets (30)</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sofa Chairs     (30)</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>2 Seater Sofas  (30)</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Display Units   (30)</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>L-shaped Sofas  (30)</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>3 Seater Sofas  (30)</label>
-                    </div>
-                </div>
-            </section>
-            <section  class="sky-form">
-                <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Brand</h4>
-                <div class="row row1 scroll-pane">
-                    <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Roadstar</label>
-                    </div>
-                    <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Tornado</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kissan</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Oakley</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Manga</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>Wega</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kings</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Zumba</label>
-                    </div>
-                </div>
-            </section>			  									 			 
         </div>
     </div>	     				
     <div class="clearfix"></div>
 </div>	 
 <script  type='text/javascript'>
-    singleView = function () {
+                        singleView = function () {
 
-        var param = {pg: 'products', method: 'single_product', product_id: 1};
-        // NProgress.start();
-        uza.get_remote(param, function (data) {
+                            var param = {pg: 'products', method: 'single_product', product_id: 1};
+                            // NProgress.start();
+                            uza.get_remote(param, function (data) {
 
-            console.log(data);
-            if (data.status === 1) {
-                console.log(data);
-                //NProgress.done();
-            }
-            else if (data.status === 0) {
-                data.message;
-                // NProgress.done();
-            }
-        });
+                                console.log(data);
+                                if (data.status === 1) {
+                                    console.log(data);
+                                    //NProgress.done();
+                                }
+                                else if (data.status === 0) {
+                                    data.message;
+                                    // NProgress.done();
+                                }
+                            });
 
-    };
-    singleView();
+                        };
+                        singleView();
 </script>
+
+<div class="clearfix"></div>
