@@ -1,18 +1,55 @@
 <html>
     <head>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="assets/js/jquery.form.js"></script>  
         <script>
-            $(function () {
-
-                $("#business").selectmenu();
+            $(document).ready(function () {
+                $("#sale_cat").selectmenu();
+                $("#sale_sub_cat").selectmenu();
                 $("#status").selectmenu();
-
             });
+
+
+            upload_product = function () {
+       
+                        $('#upload_product_form').ajaxForm(function(e){
+                            var formObj=$(this);
+                            var formURL=url+'pg=upload_product&method=product_upload';
+                            var formData=new FormData(this);
+                           
+                            
+                            $.ajax({
+                               url:formURL,
+                               type:'POST',
+                               data:formData,
+                               contentType:false,
+                               cache:false,
+                               progressData:false,
+                               success:function(){
+                                  
+                                   $('.success').html('<b>Product is successfully uploaded</b>').fadeOut(3000);
+                                  // loadPage('modules/product/insert_product.html');
+                                  
+                            },
+                                error:function(){
+                                  $('.success').html('<b>Product is not uploaded</b>').fadeOut(3000);
+                                   //loadPage('modules/product/insert_product.html');
+                                  
+                                  
+                              }
+                           
+                                
+                       
+                            
+                            
+                            
+                        });
+                        
+                    });
+           
+            }
+
         </script>
     </head>
-
 
     <div class="container">
         <ol class="breadcrumb">
@@ -26,34 +63,58 @@
                 <div class="registration_form">
                     <!-- Form -->
 
-                    <form id="registration_form" action="insert_product.html" method="post">
+
+                    <form id="upload_product_form" method="post" >
+
 
                         <div>
                             <label>
                                 <input placeholder="Product Title:" type="text" id="title" name="title">
                             </label>
                         </div>
-
-                        <div>
+                        
+                         <div>
                             <label>
-                                <select id="business">
-                                    <option value="">Business Category</option>
+                                <input type="hidden" id="title" name="pg" value="upload_product">
+                            </label>
+                        </div>
+
+
+                        <div >
+                            <label>
+
+                                <select id="sale_cat"  >
+                                    <option value="">Select Sales Category</option>
                                     <option value="">Electronics</option>
                                     <option value="">Books</option>
                                     <option value="">Clothes</option>
                                 </select>
                             </label>
                         </div>
+
+
                         <div>
                             <label>
-                                <input  type="file" id="image" name="image">
+                                <select id="sale_cat">
+                                    <option value="">Select Sales Sub-category</option>
+                                    <option value="">poem</option>
+                                    <option value="">songs</option>
+                                    <option value="">themes</option>
+                                </select>
                             </label>
                         </div>
 
                         <div>
                             <label>
-                                <select name="status" id="status" style="width:100px;">
-                                    <option value="condition">Condition</option>
+                                <input  type="file" id="image" name="image" style="width: 300px;">
+                            </label>
+                        </div>
+
+                        <div>
+                            <label>
+
+                                <select name="status" id="status" >
+                                    <option value="state">Select State of Product</option>
                                     <option value="new">New</option>
                                     <option value="used">Used</option>
                                 </select>
@@ -79,11 +140,13 @@
 
 
                         <div>
-                            <button class="btn btn-success" onmousedown="register()">Upload a Product</button>
+
+                            <input type="button" class="btn btn-success" onclick="upload_product()" value="Upload a Product"/>
                         </div>
 
                         <span class="error" style="display:none"> Fill all the fields required</span>
-                        <span class="success" style="display:none"> Registration Successfully</span>
+                        <span class="success" style="display:none"></span>
+
 
                     </form>
                     <!-- /Form -->
@@ -102,5 +165,8 @@
     </div>
 
 </html>
+
+
+
 
 

@@ -24,6 +24,7 @@ var user = '';
 var name='';
 var cat_id='';
 var param = [];
+
 var app = {
     // Application Constructor
     initialize: function () {
@@ -69,6 +70,7 @@ uza = {
     get_remote: function (param, callback, method_) {
 	window.method_ = (typeof method_ === "undefined") ? 'get' : method_;
 	window.param = (typeof param === "undefined") ? [] : param;
+        
 	$.ajax({
 	    cache: true,
 	    // url: SITE_URL + $.param(param),

@@ -43,7 +43,6 @@
     <div class="container">
     </div>
 </div>
-
 <script  type='text/javascript'>
 			login = function () {
 			    $('#login_button').mousedown(function () {
@@ -52,6 +51,7 @@
 				var param = {email: email, password: password, pg: 'login', method: 'authenticate'};
 				NProgress.start();
 				uza.get_remote(param, function (data) {
+
 
 				    console.log(data);
 				    if (data.status === 1) {
@@ -70,4 +70,4 @@
 			login();
 </script>
 
-
+       
