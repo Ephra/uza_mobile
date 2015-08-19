@@ -1,5 +1,9 @@
 <html>
     <head>
+        
+     
+
+
         <script>
             $(document).ready(function () {
                 $("#sale_cat").selectmenu();
@@ -30,8 +34,7 @@
                                    console.log(data);
                                    $('.success').html('<b>Product is successfully uploaded</b>').fadeOut(3000);
                                    loadPage('modules/product/insert_product.html');
-                                   
-                               
+                                  
                             },
                               error:function(){
                                   $('.success').html('<b>Product is not uploaded</b>').fadeOut(3000);
@@ -48,12 +51,12 @@
                         });
                         
                     });
-                });
-
+           
             }
 
         </script>
     </head>
+
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="index.html">Home</a></li>
@@ -66,18 +69,28 @@
                 <div class="registration_form">
                     <!-- Form -->
 
-                    <form id="upload_product_form" action="insert_product.html" method="post">
+
+                    <form id="upload_product_form" action="upload_product.php" method="post">
+
 
                         <div>
                             <label>
                                 <input placeholder="Product Title:" type="text" id="title" name="title">
                             </label>
                         </div>
-
-                        <div>
+                        
+                         <div>
                             <label>
-                                <select id="sale_cat" style='width: 300px'>
-                                    <option value="">Sales Category</option>
+                                <input type="hidden" id="title" name="pg" value="upload_product.php">
+                            </label>
+                        </div>
+
+
+                        <div >
+                            <label>
+
+                                <select id="sale_cat"  >
+                                    <option value="">Select Sales Category</option>
                                     <option value="">Electronics</option>
                                     <option value="">Books</option>
                                     <option value="">Clothes</option>
@@ -85,26 +98,29 @@
                             </label>
                         </div>
 
+
                         <div>
                             <label>
-                                <select id="sale_sub_cat" style='width: 300px'>
-                                    <option value="">Sales Sub-category</option>
+                                <select id="sale_cat">
+                                    <option value="">Select Sales Sub-category</option>
                                     <option value="">poem</option>
                                     <option value="">songs</option>
                                     <option value="">themes</option>
                                 </select>
                             </label>
                         </div>
+
                         <div>
                             <label>
-                                <input  type="file" id="image" name="image">
+                                <input  type="file" id="image" name="image" style="width: 300px;">
                             </label>
                         </div>
 
                         <div>
                             <label>
-                                <select name="status" id="status" style='width: 300px'>
-                                    <option value="state">State</option>
+
+                                <select name="status" id="status" >
+                                    <option value="state">Select State of Product</option>
                                     <option value="new">New</option>
                                     <option value="used">Used</option>
                                 </select>
@@ -130,11 +146,13 @@
 
 
                         <div>
+
                             <button class="btn btn-success" id="upload_product" name="upload_product">Upload a Product</button>
                         </div>
 
                         <span class="error" style="display:none"> Fill all the fields required</span>
                         <span class="success" style="display:none"></span>
+
 
                     </form>
                     <!-- /Form -->
@@ -153,6 +171,8 @@
     </div>
 
 </html>
+
+
 
 
 
