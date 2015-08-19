@@ -1,4 +1,6 @@
+
            #head{
+
                 width: 100%;
                 height: 200px;
                 background: #009688;
@@ -36,7 +38,9 @@
                 list-style: none;
             }
            #customer_things li a{
+
                background-color: #009688;
+
                color: white;
                padding: 10px 20px;
                text-decoration: none;

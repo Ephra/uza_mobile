@@ -1,100 +1,97 @@
 <div class="product-model">	 
     <div class="container">
-	<ol class="breadcrumb">
-	    <li><a href="#" onclick="loadPage('body.html')">Home</a></li>
-	    <li class="active title_name"></li>
-	</ol>
-	<h2><span class="title_name"></span> PRODUCTS</h2>			
-	<div class="col-md-9 product-model-sec">
-	    <a href="#" onclick="loadPage('././single_product.html')"><div class="product-grid love-grid">
-		    <div class="more-product"><span> </span></div>						
-		    <div class="product-img b-link-stripe b-animate-go  thickbox">
-			<img src="././assets/img/p1.jpg" class="img-responsive" alt=""/>
-			<div class="b-wrapper">
-			    <h4 class="b-animate b-from-left  b-delay03">						
-				<button class="btns"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</button>
-			    </h4>
-			</div>
-		    </div>						
-		    <div class="product-info simpleCart_shelfItem">
-			<div class="product-info-cust prt_name">
-			    <h4>5 Seater sofa set</h4>
-			    <p>ID: SR4598</p>
-			    <span class="item_price">890,999.00Tsh</span>								
-			    <input type="text" class="item_quantity" value="1" />
-			    <input type="button" class="item_add items" value="ADD">
-			</div>													
-			<div class="clearfix"> </div>
-		    </div>
-		</div></a>	
+        <ol class="breadcrumb">
+            <li><a href="#" onclick="loadPage('body.html')">Home</a></li>
+            <li class="active title_name"></li>
+        </ol>
+        <h2><span class="title_name"></span> PRODUCTS</h2>			
 
+        <div class="col-md-9 product-model-sec" id="product_lists">
+        </div>
+        <div class="rsidebar span_1_of_left">
+            <section  class="sky-form">
+                <div class="product_right">
+                    <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categories</h4>
+                    <div class="tab1" id="navigation_tabs">	
+                    </div>
 
-	</div>
-	<div class="rsidebar span_1_of_left">
-	    <section  class="sky-form">
-		<div class="product_right">
-		    <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categories</h4>
-		    <div class="tab1">
-			<ul class="place">								
-			    <li class="sort">Accessories</li>
-			    <li class="by"><img src="././assets/img/do.png" alt=""></li>
-			    <div class="clearfix"> </div>
+                </div>		    
+            </section>
+            <script type='text/javascript'>
+                page_design = function () {
+                    $('.title_name').html(name);
+                    get_product();
+                    var navigation = '';
+                    switch (cat_id) {
+                        case 1:
+                            navigation += '<ul class="place">\n\
+<li class="sort" onclick="get_product(1)">Computers</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(2)">Mobile phones</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(3)">Televisions</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(5)">Camera</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(4)">others</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\
+</ul>';
+                            break;
+                        case 2:
+                            navigation += '<ul class="place">\n\
+       <li class="sort" onclick="get_product(6)">Health</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(7)">IT</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(8)">Law</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\
+<li class="sort" onclick="get_product(9)">Business</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(10)">Novels</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\
+</ul>';
+                            break;
+                        case 3:
+                            navigation += '<ul class="place">\n\
+       <li class="sort" onclick="get_product(11)">Accessories</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(12)">Clothing</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(13)">Shoes</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(4)">others</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\
+</ul>';
+                            break;
+                        case 4:
+                            navigation += '<ul class="place">\n\
+       <li class="sort" onclick="get_product(14)">Accessories</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(15)">Clothing</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(17)">Shoes</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(16)">others</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\
+</ul>';
+                            break;
+                        default:
+                            break;
+                    }
+                    $('#navigation_tabs').html(navigation);
+                    /**   uza.get_remote({pg: 'landing', method: 'get_sub_category', cat_id: cat_id}, function (data) {
+                     //console.log(data);
+                     var navigation = '';
+                     $.each(data, function (id, value) {
+                     /// do stuff
+                     if (typeof (value.sales_subcat_name) !== undefined) {
+                     navigation += '<ul class="place"><li class="sort" onclick="get_product(' + value.sales_subcat_id + ')">' + value.sales_subcat_name + '</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span></ul>';
+                     }
+                     });
+                     $('#navigation_tabs').html(navigation);
+                     }); */
+                };
+                get_product = function (id) {
+                    var products = '';
+                    var sub_cat_id;
+                    if (typeof (id) !== 'undefined') {
+                        cat_id = sub_cat_id;
+                    }
+                    uza.get_remote({pg: 'products', method: 'get_product', sales_subcat_id: cat_id}, function (data) {
+                        if (data.status == 1) {
+                            //product exists
+                            var item = data.products;
+                            $.each(item, function (i, val) {
+                                products += '<a href="#" ><div class="product-grid love-grid"><div class="more-product"><span> </span></div><div class="product-img b-link-stripe b-animate-go  thickbox"><img src="././assets/img/p1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h4 class="b-animate b-from-left  b-delay03">	<button class="btns" onclick="loadPage(\'././single_product.html\')"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</button></h4></div></div> <div class="product-info simpleCart_shelfItem"><div class="product-info-cust prt_name"><h4>' + val.product_name + '</h4>  <p>' + val.product_description + '</p><span class="item_price">Tsh ' + val.product_price + '</span><input type="text" class="item_quantity" value="1" /><input type="button" class="item_add items" value="Buy"></div><div class="clearfix"> </div> </div></div></a>';
+                            });
 
-			</ul>
-			<div class="single-bottom">						
-			    <a href="javascript:void(0)"><p>Wallets</p></a>
-			    <a href="javascript:void(0)"><p>Belts</p></a>
-			    <a href="javascript:void(0)"><p>Watches</p></a>
+                        } else {
+                            products = 'No product available currently in this category';
+                        }
+                        $('#product_lists').html(products);
+                    });
+                };
+                page_design();
+            </script>
 
-			</div>
-		    </div>						  
-		    <div class="tab2">
-			<ul class="place">								
-			    <li class="sort">Clothing</li>
-			    <li class="by"><img src="././assets/img/do.png" alt=""></li>
-			    <div class="clearfix"> </div>
-			</ul>
-			<div class="single-bottom">						
-			    <a href="javascript:void(0)"><p>Jeans</p></a>
-			    <a href="javascript:void(0)"><p>Shirts</p></a>
-			    <a href="javascript:void(0)"><p>T-Shirts</p></a>
-			    <a href="javascript:void(0)"><p>Trousers</p></a>
-
-			</div>
-		    </div>
-		    <div class="tab3">
-			<ul class="place">								
-			    <li class="sort">Shoes</li>
-			    <li class="by"><img src="././assets/img/do.png" alt=""></li>
-			    <div class="clearfix"> </div>
-			</ul>
-			<div class="single-bottom">						
-			    <a href="javascript:void(0)"><p>Formal Shoes</p></a>
-			    <a href="javascript:void(0)"><p>Sneakers</p></a>
-			    <a href="javascript:void(0)"><p>Sports Shoes</p></a>
-			    <a href="javascript:void(0)"><p>Casual Shoes</p></a>
-
-			</div>
-		    </div>
-		    <!--script-->
-		    <script>
-
-		    </script>
-		    <!-- script -->					 
-	    </section>
-	   <script type='text/javascript'>
-		page_design = function () {
-		   $('.title_name').html(name);
-		   uza.get_remote({pg:'products',method:'get_product'},function(data){
-		       console.log(data);
-		   });
-		   uza.get_remote({pg:'landing',method:'sub_category',cat_id:cat_id},function(data){
-		       console.log(data);
-		   });
-		};
-		page_design();
-	    </script>
-
-	</div>
+        </div>
     </div>
 </div>	
