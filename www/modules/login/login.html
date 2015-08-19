@@ -1,6 +1,7 @@
 
 
 
+
 		  <div class="col-md-6 login-right">
 			  	<h3>NEW REGISTRATION</h3>
 				<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
@@ -11,26 +12,28 @@
 
     <div class="login_sec">
 
-        <div class="container">
-            <ol class="breadcrumb">
-                <li><a href="javascript:void(0)" onmousedown="loadPage('')">Home</a></li>
-                <li class="active">Login</li>
-            </ol>
-            <h2>Login</h2>
-            <div class="col-md-6 log">			 
-                <p>Welcome, please enter the following to continue.</p>
-                <p>If you have previously Login with us, <span>click here</span></p>
-                <form id="login_form" name="form1">
-                    <div>
-                        <h5>Email:</h5>	
-                        <input type="text" id="email" onkeyup="validateEmail();" name="email" required>
-                        <label id="errorPromptEmail"></label>
 
-                    </div>
-                    <div>
-                        <h5>Password:</h5>
-                        <input type="password"  onkeyup="validatePassword()" id="password" name="password" required>
-                        <label id="errorPromptPassword"></label>
+    <div class="container">
+	<ol class="breadcrumb">
+	    <li><a href="javascript:void(0)" onmousedown="loadPage('')">Home</a></li>
+	    <li class="active">Login</li>
+	</ol>
+	<h2>Login</h2>
+	<div class="col-md-6 log">			 
+	    <p>Welcome, please enter the following to continue.</p>
+	    <p>If you have previously Login with us, <span>click here</span></p>
+	    <form id="login_form" name="form1">
+		<div>
+		    <h5>Email:</h5>	
+		    <input type="text" id="email" onkeyup="validateEmail();" name="email" required>
+		    <label id="errorPromptEmail"></label>
+
+		</div>
+		<div>
+		    <h5>Password:</h5>
+		    <input type="password"  onkeyup="validatePassword()" id="password" name="password" required>
+		    <label id="errorPromptPassword"></label>
+
 
                     </div>
                     <div id="ajax_ad_results"></div>
@@ -61,7 +64,11 @@
     <script src="./assets/js/index.js"></script>
 
 
-    <script  type='text/javascript'>
+<script>
+				    console.log(data);
+				    if (data.status === 1) {
+					console.log(data);
+
 
                         login = function () {
                            
@@ -96,6 +103,7 @@
     $(document).ready(login);
 
 
+
 </script>
-   
-   
+
+       

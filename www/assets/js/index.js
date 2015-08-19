@@ -21,9 +21,13 @@
 var SITE_URL = 'http://uza.inetstz.com/index.php?';
 
 
+
 var method_ = 'post';
 
+
 var user = '';
+var name='';
+var cat_id='';
 var param = [];
 
 var app = {
@@ -90,12 +94,39 @@ uza = {
      * @param {type} url
      * @returns {undefined}
      */
-    loadPage: function (url,param) {
+    loadPage: function (url, param) {
 	NProgress.start();
+	var div='.body_content';
 	window.param = (typeof param === "undefined") ? null : param;
-	$.get(url, param, function (data) {
-	    $('.body_content').html(data);
-	    NProgress.done();
+	window.cat_id = (typeof cat_id === "undefined") ? null : param.cat_id;
+	window.name = (typeof name === "undefined") ? null : param.name;
+	$.ajax({
+	    url: url,
+	    dataType: 'html',
+	    data: param,
+	    async: true,
+	    cache: true,
+	    success: function (data, textStatus, XMLHttpRequest) {
+		/*NProgress.done();*/
+
+		$(div).off();  /*Calling .off() with no arguments removes all handlers attached to the elements.*/
+		$(div).empty();  /*clearing the content of the div*/
+		$(div).html(data);
+		NProgress.done();
+//let us translate that part that comes with ajax
+	    },
+	    error: function (xhr, textStatus, errorThrown) {
+		/*Owden*/
+		/* NProgress.done();*/
+		if (xhr.responseText === undefined) {
+		    alert('There was a problem on connecting to the network. Check your internet connection settings.');
+		} else {
+		    alert('Error occurs.');
+		}
+	    },
+	    complete: function () {
+
+	    }
 	});
     },
     /**
@@ -139,18 +170,19 @@ uza = {
 	    'method': 'get_navigation'
 	};
 	this.get_remote(pages, function (data) {
-	   // console.log(data);
+	    // console.log(data);
 	    $.each(data, function (i, val) {
 		//console.log(val);
-		if ($('#' +  val.sales_cat_id).length == 0) {
-		    $('#nav_menu').append('<li id="' + val.sales_cat_id +'" class="active grid"><a class="color1" href="javascript:;" onmousedown="uza.loadPage(\'modules/product/product.html\',{cat_id:\''+val.sales_cat_id +'\',type:\'product\'})">' + val.sales_cat_name+ '</a></li>');
+		var name = val.sales_cat_name.replace(/'/g, "\\'");
+		if ($('#' + val.sales_cat_id).length == 0) {
+		    $('#nav_menu').append('<li id="' + val.sales_cat_id + '" class="active grid"><a class="color1" href="javascript:;" onmousedown="uza.loadPage(\'modules/product/product.html\',{cat_id:\'' + val.sales_cat_id + '\',type:\'product\',name:\''+ name+'\'})">' + val.sales_cat_name + '</a></li>');
 		}
 	    });
 	});
     }
 };
 user = uza.getCookie('user');
-uza.getNavigationPages();
+//uza.getNavigationPages();
 
 
 /**
