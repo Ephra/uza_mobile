@@ -1,16 +1,26 @@
 <html>
     <head>
+
        
         <script>
             $(document).ready(function () {
 
                 $("#sale_cat").selectmenu();
                 $("#sale_sub_cat").selectmenu();
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function () {
                 $("#status").selectmenu();
 
             });
         </script>
     </head>
+
+
+
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="index.html">Home</a></li>
@@ -31,16 +41,7 @@
                             </label>
                         </div>
 
-                        <div>
-                            <label>
-                                <select id="sale_cat" style='width: 300px'>
-                                    <option value="">Sales Category</option>
-                                    <option value="">Electronics</option>
-                                    <option value="">Books</option>
-                                    <option value="">Clothes</option>
-                                </select>
-                            </label>
-                        </div>
+ 
                         
                          <div>
                             <label>
@@ -52,6 +53,7 @@
                                 </select>
                             </label>
                         </div>
+
                         <div>
                             <label>
                                 <input  type="file" id="image" name="image">
@@ -60,8 +62,10 @@
 
                         <div>
                             <label>
+
                                 <select name="status" id="status" style='width: 300px'>
                                     <option value="state">State</option>
+
                                     <option value="new">New</option>
                                     <option value="used">Used</option>
                                 </select>
