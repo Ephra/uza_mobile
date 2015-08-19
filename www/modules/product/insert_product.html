@@ -1,9 +1,6 @@
 <html>
     <head>
         
-     
-
-
         <script>
             $(document).ready(function () {
                 $("#sale_cat").selectmenu();
@@ -22,6 +19,7 @@
                             var formObj=$(this);
                             var formURL=formObj.attr("action");
                             var formData=new FormData(this);
+                           
                             
                             s.ajax({
                                url:formURL,
@@ -30,8 +28,8 @@
                                contentType:false,
                                cache:false,
                                progressData:false,
-                               success:function(data){
-                                   console.log(data);
+                               success:function(){
+                                  
                                    $('.success').html('<b>Product is successfully uploaded</b>').fadeOut(3000);
                                    loadPage('modules/product/insert_product.html');
                                   

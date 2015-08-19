@@ -1,14 +1,15 @@
 <?php
 
 class upload_product {
-    
-    
 
+    public $image_path;
+            
     function upload_product() {
         
-
+        if($this->image()){
+            
         if (isset($_GET['callback']) == TRUE) {
-
+     
             $object = array(
                 "product_name" => $_GET['product_name'],
                 "sales_subcat_id" => $_GET['sales_subcat_id'],
@@ -16,9 +17,9 @@ class upload_product {
                 "product_state" => $_GET['product_state'],
                 "product_price" => $_GET['product_price'],
                 "product_quantity" => $_GET['product_quantity'],
-                       
+                "image_path"=>  $this->image_path
             );
-
+        
 
             foreach ($object as $key => $value) {
                 # code...
@@ -49,44 +50,44 @@ class upload_product {
             echo $_GET['callback'] . '(' . json_encode($result) . ')';
         }
     }
+ else {
+        return array('success'=>5);
+    }
+    
+    }
 
     public function image() {
 
-    $uploadImage=new File();
-    if(isset($_FILES['image'])){
-        $uploadImage->upload_image($_FILES['name']);
-    }
-    
- else {
-        echo 'Image not uploaded';
-    }
-       
+        $uploadImage = new File();
+        if (isset($_FILES['image'])) {
+            $up= $uploadImage->upload_image($_FILES['name']);
+            $this->image_path=$uploadImage->path;
+            return $up;
+        } else {
+             return array('success'=>4);
+        }
     }
 
 }
 
-class File{
-    
-   public $_supportedFormats=['image/png','image/jpeg','image/gif','image/jpg'];
-   
-   public function upload_image($file){
-       if(is_array($file)){
-           
-           if(in_array($file['type'], $this->_supportedFormars)){
-               move_uploaded_file($file['tmp_name'],'media/uploaded_images/'.$file['name']);
-              
-                 }
-                    else {
-                     echo 'the file format is not supported';
-              }
-                   }
-        else {
-           echo 'Image was not chosen';   
-       }
-              
-   }
-        
-}
-    
-    
+class File {
+    public $path;
 
+    public $_supportedFormats = ['image/png', 'image/jpeg', 'image/gif', 'image/jpg'];
+
+    public function upload_image($file) {
+        if (is_array($file)) {
+
+            if (in_array($file['type'], $this->_supportedFormars)) {
+                $this->path=   'media/uploaded_images/' .time(). $file['image'];
+               $x=move_uploaded_file($file['tmp_name'], $this->path);
+               return $x==true ? array('success'=>1): array('success'=>0);
+               } else {
+                return array('success'=>2);
+            }
+        } else {
+             return array('success'=>3);
+        }
+    }
+
+}
