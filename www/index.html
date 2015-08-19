@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Uza | Home :: Uza</title>
+	  <link rel="shortcut icon" href="favicon.ico">
         <link href="assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary JavaScript plugins) -->
         <script type='text/javascript' src="assets/js/jquery-1.11.1.min.js"></script>
@@ -48,7 +49,8 @@
                     <div class="top_left">
                         <ul>
 
-                            <li class="top_link"><a href="javascript:void(0)" onclick="return false" onmousedown="loadPage('modules/account/account.html')">My Account</a></li>					
+                            <li class="top_link"><a href="javascript:void(0)" onclick="return false" onmousedown="loadPage('modules/account/account.html')">My Account</a></li>	
+			    <li class="top_link"><span class="login"></span></li>			    
                         </ul>
 
                     </div>
@@ -73,10 +75,7 @@
 			}
 			$(document).ready(set_pages);
 		    </script>
-                    <div class="login">
-
-
-                    </div>
+                    
 
                     <a class="acount-btn" href="javascript:void(0)" onmousedown="loadPage('modules/signup/signup.html')">Create an Account</a>
                     <div class="cart box_1">
@@ -96,12 +95,11 @@
             <div class="container">
                 <div class="menu_sec">
                     <ul class="megamenu skyblue" id="nav_menu">
-               
-                       <!-- <li class="grid"><a class="color2"  href="javascript:;" onmousedown="loadPage('categories/electronics/electronics.html')">electronics</a></li>
-                        <li><a class="color4" href="javascript:;" onmousedown="loadPage('categories/books/books.html')">books</a></li>				
-                        <li><a class="color5" href="javascript:;" onmousedown="loadPage('categories/womens_fashion/womensfashion.html')">Women's Fashion</a></li>	
-                        <li><a class="color3" href="javascript:;" onmousedown="loadPage('categories/mens_fashion/mensfashion.html')">Men's Fashion</a></li>				
--->
+                        <li class="active grid"><a class="color1" href="javascript:;" onmousedown="loadPage('body.html')">Home</a></li>
+                        <li class="grid"><a class="color2"  href="javascript:;" onmousedown="uza.loadPage('modules/product/product.html',{cat_id:1,type:'product',name:'Electronics'})">electronics</a></li>
+                        <li><a class="color4" href="javascript:;" onmousedown="uza.loadPage('modules/product/product.html',{cat_id:2,type:'product',name:'Books'})">books</a></li>				
+                        <li><a class="color5" href="javascript:;" onmousedown="uza.loadPage('modules/product/product.html',{cat_id:3,type:'product',name:'Women\'s Fashion'})">Women's Fashion</a></li>	
+                        <li><a class="color3" href="javascript:;"onmousedown="uza.loadPage('modules/product/product.html',{cat_id:4,type:'product',name:'Men\'s Fashion'})">Men's Fashion</a></li>				
 
                     </ul> 
                     <div class="search">

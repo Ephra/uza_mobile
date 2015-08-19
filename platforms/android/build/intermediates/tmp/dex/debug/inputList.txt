@@ -1,2 +1,0 @@
-/Users/user/uza/platforms/android/build/intermediates/classes/debug
-/Users/user/uza/platforms/android/build/intermediates/pre-dexed/debug/classes-d57b108d1146705a292ff96adc79b7b23d4f7728.jar
