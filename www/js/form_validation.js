@@ -1,6 +1,6 @@
 
 
-           function validateName() {
+function validateName() {
 
     var name = document.getElementById("name").value;
     if (name.length == 0) {
@@ -20,22 +20,43 @@
 
 }
 
-             function  validatePhone() {
+function validateLastName() {
+
+    var name = document.getElementById("name").value;
+    if (name.length == 0) {
+
+        producePrompt("Last Name is required", "errorPromptLastName", "red");
+        return false;
+    }
+
+    if (!name.match(/^[A-Za-z]*$/)) {
+
+        producePrompt("Last Name is invalid", "errorPromptLastName", "red");
+        return false;
+
+    }
+
+    producePrompt("valid last name", "errorPromptLastName", "green");
+
+}
+
+function  validatePhone() {
     var phone = document.getElementById('phone').value;
-    
-    if (phone.length == 0 &&( phone.length!=10)) {
 
-        producePrompt("Name is required", "errorPromptPhone", "red");
+    if (phone.length != 10) {
+
+        producePrompt("Number is too short", "errorPromptPhone", "red");
         return false;
 
     }
-    
-    if(!phone.match(/^[0-9]{10}$/)){
-        
-          producePrompt("phone number is incomplete", "errorPromptPhone", "red");
+
+    if (!phone.match(/^[0-9]{10}$/)) {
+
+        producePrompt("phone number should have only number", "errorPromptPhone", "red");
         return false;
-        
+
     }
+
     
      producePrompt("Valid number" + name, "errorPromptPhone", "green");
              }
@@ -91,6 +112,7 @@
 
                     document.getElementById(promptLocation).innerHTML = message;
                     document.getElementById(promptLocation).style.color = color;
+
 
 
 }

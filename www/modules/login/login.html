@@ -1,5 +1,6 @@
 
 
+
 		  <div class="col-md-6 login-right">
 			  	<h3>NEW REGISTRATION</h3>
 				<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
@@ -47,6 +48,7 @@
         </div>
 
 
+
     </div>
     <!---->
     <div class="footer-content">
@@ -54,20 +56,25 @@
         </div>
     </div>
 
+
+
     <script src="./assets/js/index.js"></script>
-     <script src="js/form_validation.js"></script>
 
 
     <script  type='text/javascript'>
 
                         login = function () {
-
+                           
 	$('#login_button').mousedown(function () {
+            
 	    var email = $('#email').val();
 	    var password = $('#password').val();
-	    var param = {email: email, password: password,pg:'login',method:'authenticate'};    
+           
+	    var param = {email: email,password: password,pg:'login',method:'authenticate'};  
+            
             NProgress.start();
 	    uza.get_remote(param, function (data) {
+                
 		
                     console.log(data);
                 if(data.status===1){
@@ -85,7 +92,9 @@
 	});
     };
 
+
     $(document).ready(login);
+
 
 </script>
    

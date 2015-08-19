@@ -20,7 +20,9 @@
 
 var SITE_URL = 'http://uza.inetstz.com/index.php?';
 
+
 var method_ = 'post';
+
 var user = '';
 var param = [];
 
@@ -67,8 +69,9 @@ uza = {
      * @returns {undefined}
      */
     get_remote: function (param, callback, method_) {
-	window.method_ = (typeof method_ === "undefined") ? 'post' : method_;
+	window.method_ = (typeof method_ === "undefined") ? 'get' : method_;
 	window.param = (typeof param === "undefined") ? [] : param;
+        
 	$.ajax({
 	    cache: true,
 	    // url: SITE_URL + $.param(param),
