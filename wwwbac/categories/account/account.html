@@ -1,0 +1,126 @@
+<!---->
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Account</li>
+    </ol>
+    <div class="registration">
+        <div class="registration_left">
+            <h2>new user? <span> create an account </span></h2>
+
+            <div class="registration_form">
+                <!-- Form -->
+
+                <form id="registration_form">
+                    <div>
+                        <label>
+                            <input placeholder="first name:" type="text"  id="fname" name="fname" >
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="last name:" type="text" id="lname" name="lname" >
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="email address:" type="email" name="email"  id="email">
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            <input placeholder="password" type="password" name="password" id="password" >
+                        </label>
+                    </div>	
+
+                    <div>
+                        <label>
+                            <input placeholder="Phone Number:" type="text" name="phone" id="phone">
+                        </label>
+                    </div>					
+
+                    <div>
+
+                        <label>
+                            <input placeholder="location" type="text" name="location" id="location">
+                        </label>
+                    </div>	
+
+                    <div>
+                        <button class="btn btn-success" onmousedown="register();" >create an account</button>
+                    </div>
+
+                    <span class="error" style="display:none"> Fill all the fields required</span>
+                    <span class="success" style="display:none"> Registration Successfully</span>
+
+                </form>
+                <!-- /Form -->
+            </div>
+        </div>
+        <div class="registration_left">
+            <h2>existing user</h2>
+            <div class="registration_form">
+                <!-- Form -->
+
+                <form id="registration_form_2" >
+                    <div>
+                        <label>
+                            <input placeholder="email:" type="email" id="email" >
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="password" type="password" id="password" >
+                        </label>
+                    </div>						
+                    <div>
+                        <input  value="sign in" id="register-submit">
+                    </div>
+                    <div class="forget">
+                        <a href="#">forgot your password</a>
+                    </div>
+
+                    <span class="error" style="display:none"> Make sure password or email is correct </span>
+                    <span class="success" style="display:none">Login Successfully</span>
+                </form>
+                <!-- /Form -->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- end registration -->
+    <div class="footer-content">
+
+    </div>
+    <!---->
+
+</div>
+<script type="text/javascript">
+    function register() {
+        var fname=$('#fname').val();
+        var lname=$('#lname').val();
+        var email=$('#email').val();
+        var password=$('#password').val();
+        var phone=$('#phone').val();
+        var location=$('#location').val();
+        var param= {
+            pg:'register',
+            method:'register_client',
+            fname:fname,
+            lname:lname,
+            email:email,
+            password:password,
+            phone:phone,
+            location:location
+        }
+        
+        uza.get_remote(param,function(data){
+            
+            console.log(data);
+        });
+    }
+</script>
+
+

@@ -1,0 +1,63 @@
+<div class="login_sec">
+
+	 <div class="container">
+		 <ol class="breadcrumb">
+                     <li><a href="javascript:void(0)" onmousedown="loadPage('')">Home</a></li>
+		  <li class="active">Login</li>
+		 </ol>
+		 <h2>Login</h2>
+		 <div class="col-md-6 log">			 
+				 <p>Welcome, please enter the following to continue.</p>				 <form id="login_form">
+					 <h5>Email:</h5>	
+					 <input type="text" id="email" name="email" value="">
+					 <h5>Password:</h5>
+					 <input type="password"  id="password" name="password" value="">
+                                         <div id="ney"></div><br />
+                                         <button class="btn btn-success" type="button"   id="login_button" name="btnLogin">Login</button><br />
+					  <a href="#" >Forgot Password ?</a>
+				 </form>				 
+		 </div>
+		  <div class="col-md-6 login-right">
+			  	<h3>NEW REGISTRATION</h3>
+				<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                                <a class="acount-btn" href="javascript:void(0)" onmousedown="loadPage('././modules/signup/signup.html')">Create an Account</a>
+		 </div>
+		 <div class="clearfix"></div>
+	 </div>
+
+</div>
+<!---->
+<div class="footer-content">
+    <div class="container">
+    </div>
+</div>
+
+<script src="./assets/js/index.js"></script>
+<script  type='text/javascript'>
+
+	login = function () {
+
+	$('#login_button').mousedown(function () {
+	    var email = $('#email').val();
+	    var password = $('#password').val();
+	    var param = {email: email, password: password,pg:'login',method:'authenticate'};    
+            NProgress.start();
+	    uza.get_remote(param, function (data) {
+		console.log(data);
+                if(data.status===1){
+                    $('#ney').html("<div class='alert alert-success'> Login Successfully! </div>").fadeOut(3000);
+                    
+                    //loadPage('modules/index.html');
+                }
+                else if(data.status===0){
+                    $('#ney').html("<div class='alert alert-danger'> Login Failed, Try again </div>").fadeOut(3000);
+                     //loadPage('modules/login/login.html');
+                }
+	    });
+	});
+    };
+    $(document).ready(login);
+</script>
+
+
+
