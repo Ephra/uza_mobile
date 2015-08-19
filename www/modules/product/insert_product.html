@@ -1,10 +1,20 @@
 <html>
     <head>
-        <script src="assets/js/jquery.form.js"></script>  
+
+
+       
         <script>
             $(document).ready(function () {
+
                 $("#sale_cat").selectmenu();
                 $("#sale_sub_cat").selectmenu();
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function () {
+
                 $("#status").selectmenu();
             });
             upload_product = function () {
@@ -75,29 +85,19 @@
                                 <input type="hidden" id="title" name="pg" value="upload_product">
                             </label>
                         </div>
-
-
-                        <div >
+ <div>
                             <label>
-
-
-                                <select id="sale_cat"  >
-                                    <option value="">Select Sales Category</option>
-                                    <option value="">Electronics</option>
-                                    <option value="">Books</option>
-                                    <option value="">Clothes</option>
-                                </select>
-                            </label>
-                        </div> <div>
-                            <label>
-                                <select id="sale_cat">
-                                    <option value="">Select Sales Sub-category</option>
+                                <select id="sale_sub_cat" style='width: 300px'>
+                                    <option value="">Sales Sub-category</option>
                                     <option value="">poem</option>
                                     <option value="">songs</option>
                                     <option value="">themes</option>
+
                                 </select>
                             </label>
                         </div>
+
+
 
                         <div>
                             <label>
@@ -105,9 +105,12 @@
                             </label>
                         </div>
 
-                        <div>
-                            <label> <select name="status" id="status" >
-                                    <option value="state">Select State of Product</option>
+                        <div><label>
+
+
+                                <select name="status" id="status" style='width: 300px'>
+                                    <option value="state">State</option>
+
                                     <option value="new">New</option>
                                     <option value="used">Used</option>
                                 </select>

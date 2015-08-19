@@ -1,6 +1,4 @@
-
-
-           function validateName() {
+function validateName() {
 
     var name = document.getElementById("name").value;
     if (name.length == 0) {
@@ -86,10 +84,6 @@
                  
                  
              }
-                 
-                       
-             
-
               function producePrompt(message, promptLocation, color) {
 
                     document.getElementById(promptLocation).innerHTML = message;

@@ -21,7 +21,7 @@
 //var SITE_URL = 'http://uza_application/index.php?';
 var SITE_URL = 'http://uza.inetstz.com/index.php?';
 
-var method_ = 'get';
+var method_ = 'post';
 var user = '';
 var name='';
 var cat_id='';
