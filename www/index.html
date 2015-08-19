@@ -32,7 +32,8 @@
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/validator-default.js"></script>
        
-
+       <script src="assets/js/index.js"></script>
+       
 
     </head>
     <body>
@@ -112,11 +113,39 @@
 
                     </ul> 
                     <div class="search">
-                        <form>
-                            <input type="text" value="" placeholder="Search...">
-                            <input type="submit" value="">
-                        </form>
+                       
+                            <input  id="search" type="text" value="" placeholder="Search...">
+                            <input type="submit" id="find" value="">
+                       
                     </div>
+              <script type='text/javascript'>
+
+                  find = function () {
+
+    $('#find').mousedown(function () {
+        var search = $('#search').val();
+        var param = {search: search, pg:'products',method:'search_product'};
+            NProgress.start(); 
+        uza.get_remote(param, function (data) {
+        alert('done');
+                    console.log(data);
+                if(data.status===1){
+                    console.log(data);
+                    
+                    loadPage('serch_result.html');
+                    NProgress.done();
+                }
+                else if(data.status===0){
+                    $('#ajax_ad_results').html('<div class="alert alert-danger>'+data.message+'</div>"').fadeOut(7000);
+                    
+                    NProgress.done();
+                }
+        });
+    });
+    };
+    $(document).ready(find);
+    </script>
+    
                     <div class="clearfix"></div>
                 </div>
             </div>
