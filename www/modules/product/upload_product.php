@@ -4,7 +4,7 @@ class upload_product {
 
     public $image_path;
             
-    function upload_product() {
+    function product_upload() {
         
         if($this->image()){
             

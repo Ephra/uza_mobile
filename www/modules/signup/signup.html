@@ -135,7 +135,7 @@
                                                                         var password = $('#password').val();
                                                                         var phone = $('#phone').val();
                                                                         var location = $('#location').val();
-                                                                        var level_id = $('#level_id').val();
+                                                                       
                                                                         var param = {
                                                                         pg: 'register',
                                                                                 method: 'register_client',
@@ -145,7 +145,7 @@
                                                                                 password: password,
                                                                                 phone: phone,
                                                                                 location: location,
-                                                                                level_id: level_id
+                                                                                
                                                                         }
                                                                 NProgress.start();
                                                                         uza.get_remote(param, function (data) {
