@@ -4,7 +4,7 @@
     <head>
         <title>Uza | Home :: Uza</title>
         <link href="assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
-        <!-- jQuery (necessary JavaScript plugins) -->
+        <!--<jQuery (necessary JavaScript plugins)-->
         <script type='text/javascript' src="assets/js/jquery-1.11.1.min.js"></script>
         <!-- Custom Theme files -->
         <link href="assets/css/style.css" rel='stylesheet' type='text/css' />
@@ -31,6 +31,9 @@
         <script src="assets/js/responsiveslides.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/validator-default.js"></script>
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 
     </head>
@@ -42,17 +45,19 @@
                 <div class="header_top-sec">
                     <div class="top_right">
                         <ul>
-                            <li><a href="javascript:void(0)"  onmousedown="loadPage('categories/account/account.html')">help</a></li>|
-                            <li><a href="javascript:void(0)"  onmousedown="loadPage('modules/contact/contact.html')">Contact</a></li>|
+                            <li><a href="javascript:void(0)"  onmousedown="loadPage('categories/account/account.html')">help</a></li>
+                            <li><a href="javascript:void(0)"  onmousedown="loadPage('modules/contact/contact.html')">Contact</a></li>
                             <li><a href="javascript:void(0)"  onmousedown="loadPage('modules/login/login.html')">Track Order</a></li>
                         </ul>
                     </div>
                     <div class="top_left">
                         <ul>
 
-                            <li class="top_link">Email:<a href="#">info@uza.com</a></li>|
+                            <li class="top_link">Email:<a href="#">info@uza.com</a></li>
 
-                            <li class="top_link"><a href="javascript:void(0)" onclick="return false" onmousedown="loadPage('modules/login/login.html')">My Account</a></li>					
+                            <li class="top_link"><a href="javascript:void(0)" onclick="return false" onmousedown="loadPage('modules/login/login.html')">My Account</a></li>
+                            <li><a class="acount-btn" href="javascript:void(0)" onmousedown="loadPage('././modules/signup/signup.html')">Create an Account</a></li>
+                            <li class="top_link"><a href="javacsript:void(0)" onclick="return false" onmousedown="loadPage('modules/product/insert_product.html')">Upload Product</a></li>
                         </ul>
 
                     </div>
@@ -71,8 +76,9 @@
                     <div class="login">
                         
                         <a onclick="return false" href="javascript:void(0)" onmousedown="loadPage('modules/login/login.html')">LOGIN</a>
+                         
                     </div>
-                    <a class="acount-btn" href="javascript:void(0)" onmousedown="loadPage('././modules/signup/signup.html')">Create an Account</a>
+                   
                     <div class="cart box_1">
                         <a onclick="return false" href="javascript:void(0)" onmousedown="loadPage('cart.html')">
                             <h3> <span class="ssimpleCart_total">0.00Tsh</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span> items)<img src="assets/img/bag.png" alt=""></h3>
