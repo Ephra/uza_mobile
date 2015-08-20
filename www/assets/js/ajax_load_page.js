@@ -3,7 +3,6 @@ $(document).ready(function () {
     $(".megamenu").megamenu();
     loadPage('body.html');
 });
-
 loadPage = function (url) {
     NProgress.start();
     $.get(url, {null: null}, function (data) {
@@ -11,19 +10,3 @@ loadPage = function (url) {
 	NProgress.done();
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

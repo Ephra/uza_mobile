@@ -4,19 +4,17 @@
 
     <script src="js/form_validation.js"></script>
     <script>
-                $(document).ready(function () {
+	$(document).ready(function () {
 
-        $("#district").selectmenu();
-        });        </script>
+	    $("#district").selectmenu();
+	});</script>
 
 
 
     <div class="login_sec">
         <div class="container">
             <ol class="breadcrumb">
-
                 <li><a href="javascript:void(0)" onmousedown="loadPage('index.html')">Home</a></li>
-
                 <li class="active">Create an Account</li>
             </ol>
             <h2>Create an Account</h2>
@@ -24,7 +22,6 @@
                 <p>Welcome, please enter the following to continue.</p>
                 <p>If you have previously Login with us, <span>click here</span></p>
                 <form id="login_form">
-
                     <div >
 
                         <input placeholder="First name:" onkeyup='validateName()' type="text"  id="name" name="fname" >
@@ -74,7 +71,7 @@
                         </label>
                     </div>
 
-                    
+
 
                     <button class="btn btn-success" type="button"   id="register_button" name="btnRegister" style="margin-bottom: 30px;">Register</button>
 
@@ -124,45 +121,44 @@
         <script src="./assets/js/index.js"></script>
 
         <script  type='text/javascript'>
-                                       
-                            register = function () {
 
-                                                                        $('#register_button').mousedown(function () {
+				    register = function () {
 
-                                                                        var fname = $('#fname').val();
-                                                                        var lname = $('#lname').val();
-                                                                        var email = $('#email').val();
-                                                                        var password = $('#password').val();
-                                                                        var phone = $('#phone').val();
-                                                                        var location = $('#location').val();
-                                                                       
-                                                                        var param = {
-                                                                        pg: 'register',
-                                                                                method: 'register_client',
-                                                                                fname: fname,
-                                                                                lname: lname,
-                                                                                email: email,
-                                                                                password: password,
-                                                                                phone: phone,
-                                                                                location: location,
-                                                                                
-                                                                        }
-                                                                NProgress.start();
-                                                                        uza.get_remote(param, function (data) {
-                                                                        console.log(data);
-                                                                                if (data.status === 1) {
-                                                                        $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
-                                                                                NProgress.done();
-                                                                                loadPage('modules/login/login.html');
-                                                                        }
-                                                                        else if (data.status === 0) {
-                                                                        $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
-                                                                                NProgress.done();
-                                                                        }
-                                                                        });
-                                                                });
-                                                                };
-                                                                        register();
+					$('#register_button').mousedown(function () {
+
+					    var fname = $('#fname').val();
+					    var lname = $('#lname').val();
+					    var email = $('#email').val();
+					    var password = $('#password').val();
+					    var phone = $('#phone').val();
+					    var location = $('#location').val();
+
+					    var param = {
+						pg: 'register',
+						method: 'register_client',
+						fname: fname,
+						lname: lname,
+						email: email,
+						password: password,
+						phone: phone,
+						location: location,
+					    }
+					    NProgress.start();
+					    uza.get_remote(param, function (data) {
+						console.log(data);
+						if (data.status === 1) {
+						    $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
+						    NProgress.done();
+						    loadPage('modules/login/login.html');
+						}
+						else if (data.status === 0) {
+						    $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
+						    NProgress.done();
+						}
+					    });
+					});
+				    };
+				    register();
         </script>
 
 

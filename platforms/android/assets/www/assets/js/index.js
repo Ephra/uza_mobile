@@ -162,3 +162,5 @@ uza.getNavigationPages();
  
  });
  */
+
+app.initialize();
