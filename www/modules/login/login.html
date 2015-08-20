@@ -1,16 +1,8 @@
-<div class="col-md-6 login-right">
-    <h3>NEW REGISTRATION</h3>
-    <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-    <a class="acount-btn" href="javascript:void(0)" onmousedown="loadPage('././modules/signup/signup.html')">Create an Account</a>
-</div>
-<div class="clearfix"></div >
 
 
 <div class="login_sec">
 
-
     <div class="container">
-
         <ol class="breadcrumb">
             <li><a href="javascript:void(0)" onmousedown="loadPage('')">Home</a></li>
             <li class="active">Login</li>
@@ -25,6 +17,11 @@
                     <input type="text" id="email" onkeyup="validateEmail();" name="email" required>
                     <label id="errorPromptEmail"></label>
 
+                </div>
+                <div>
+                    <h5>Password:</h5>
+                    <input type="password"  onkeyup="validatePassword()" id="password" name="password" required>
+                    <label id="errorPromptPassword"></label>
 
                 </div>
                 <div id="ajax_ad_results"></div>
@@ -41,8 +38,6 @@
         <div class="clearfix"></div>
     </div>
 
-
-
 </div>
 <!---->
 <div class="footer-content">
@@ -51,49 +46,37 @@
 </div>
 
 
-
 <script src="./assets/js/index.js"></script>
+<script src="js/form_validation.js"></script>
 
 
-<script>
-                        console.log(data);
-                        if (data.status === 1) {
-                            console.log(data);
+<script  type='text/javascript'>
 
+                        login = function () {
 
-                            login = function () {
+                            $('#login_button').mousedown(function () {
+                                var email = $('#email').val();
+                                var password = $('#password').val();
+                                var param = {email: email, password: password, pg: 'login', method: 'authenticate'};
+                                NProgress.start();
+                                uza.get_remote(param, function (data) {
 
-                                $('#login_button').mousedown(function () {
-
-                                    var email = $('#email').val();
-                                    var password = $('#password').val();
-
-                                    var param = {email: email, password: password, pg: 'login', method: 'authenticate'};
-
-                                    NProgress.start();
-                                    uza.get_remote(param, function (data) {
-
-
+                                    console.log(data);
+                                    if (data.status === 1) {
                                         console.log(data);
-                                        if (data.status === 1) {
-                                            console.log(data);
 
-                                            loadPage('modules/login/home.html');
-                                            NProgress.done();
-                                        }
-                                        else if (data.status === 0) {
-                                            $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"').fadeOut(7000);
+                                        loadPage('modules/login/home.html');
+                                        NProgress.done();
+                                    }
+                                    else if (data.status === 0) {
+                                        $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"').fadeOut(7000);
 
-                                            NProgress.done();
-                                        }
-                                    });
+                                        NProgress.done();
+                                    }
                                 });
+                            });
                         };
-
-
-                        $(document).ready(login);
-
-
-
+                        login();
 </script>
+
 
