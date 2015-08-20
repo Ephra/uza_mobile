@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>manage account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="account.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function () {
+
+                $("#business").selectmenu();
+                $("#sel").selectmenu();
+
+            });
+        </script>
+    </head>
+    <body>
+        <div id="main_body">
+
+            <div id="head">
+
+            </div>
+            <div id="change">
+
+
+                <select id="sel" style="width: 200px; ">
+                    <option>Manage</option>
+                    <option  value="name"> Joshua John</option>
+                </select>
+            </div>
+
+            <div id="changing_details">
+
+                <div id="change_image">
+                   
+                    <a href="#" style="text-decoration: none">Change image</a>
+
+                </div>
+                <form method="get">
+                    <h2 style="margin-left: 40px">Account Setting</h2>
+                    <table>
+                        <tr>
+                            <td style="text-align: right">First name:</td>
+                            <td><input type="text" id="fname" value="Joshua"></td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: right">Last name</td>
+                            <td><input type="text" id="lname" value="John"></td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td style="text-align: right">Email address:</td>
+                            <td><input type="email" id="email" value="jjmogha@gmail.com"></td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: right">Phone number:</td>
+                            <td><input type="text" id="phone_number" value="0713003826"></td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: right">Location:</td>
+                            <td><input type="text" id="location" value="Mbeya"></td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: right">Business Type:</td>
+                            <td>
+
+                                <select id="business" name="business">
+                                    <option value="elect" >Electronics</option>
+                                    <option value="">Books</option>
+                                    <option value="">Clothes</option>
+
+                                </select>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <button id="btn_save">Save settings</button>
+                </form>
+
+
+
+            </div>
+
+
+
+        </div>
+    </body>
+</html>

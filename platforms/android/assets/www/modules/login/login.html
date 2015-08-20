@@ -47,19 +47,22 @@
 
 
     <script src="./assets/js/index.js"></script>
-     <script src="js/form_validation.js"></script>
 
 
     <script  type='text/javascript'>
 
                         login = function () {
-
+                           
 	$('#login_button').mousedown(function () {
+            
 	    var email = $('#email').val();
 	    var password = $('#password').val();
-	    var param = {email: email, password: password,pg:'login',method:'authenticate'};    
+           
+	    var param = {email: email,password: password,pg:'login',method:'authenticate'};  
+            
             NProgress.start();
 	    uza.get_remote(param, function (data) {
+                
 		
                     console.log(data);
                 if(data.status===1){
@@ -76,7 +79,7 @@
 	    });
 	});
     };
-    $(document).ready(login);
+        login();
 </script>
    
    
