@@ -1,15 +1,8 @@
 
 <!DOCTYPE HTML>
 <html>
-    <script src="js/form_validation.js"></script>
-    <script>
-        $(document).ready(function () {
 
-            $("#district").selectmenu();
-
-
-        });
-    </script>
+ 
 
 
     <div class="login_sec">
@@ -22,10 +15,10 @@
             <div class="col-md-6 log">			 
                 <p>Welcome, please enter the following to continue.</p>
                 <p>If you have previously Login with us, <span>click here</span></p>
-                <form id="login_form">
+                <form id="registration_form">
                     <div >
 
-                        <input placeholder="First name:" onkeyup='validateName()' type="text"  id="name" name="fname" >
+                        <input placeholder="First name:"  type="text"  id="first_name" name="first_name" >
                         <label id="errorPromptName"></label>
                     </div>
 
@@ -37,33 +30,33 @@
                     </div>
                     <div >
 
-                        <input placeholder="Last name:" type="text" onkeyup="validateLastName()"  id="name" name="lname" >
+                        <input placeholder="Last name:" type="text"   id="last_name" name="last_name" >
                         <label id='errorPromptLastName'></label>
 
                     </div>
 
                     <div>
 
-                        <input placeholder="Email" type="text" onkeyup="validateEmail()" name="email" id="email" >
+                        <input placeholder="Email" type="text"  name="email" id="email" >
                         <label id='errorPromptEmail'></label>
 
                     </div>
                     <div >
 
-                        <input placeholder="Password" type="password" onkeyup="validatePassword()" name="password" id="password" >
+                        <input placeholder="Password" type="password"  name="password" id="password" >
                         <label id="errorPromptPassword"></label>
 
                     </div>
                     <div >
 
-                        <input placeholder="Comfirm Password" type="password" onkeyup='validatePassword()' name="confirm_password" id="confirm_password" >
+                        <input placeholder="Comfirm Password" type="password"  name="confirm_password" id="confirm_password" >
                         <label id="errorPromptPassword"></label>
 
                     </div>	
 
                     <div>
 
-                        <input placeholder="Phone Number:" type="text" onkeyup="validatePhone()" name="phone" id="phone">
+                        <input placeholder="Phone Number:" type="text"  name="phone_number" id="phone_number">
                         <label id="errorPromptPhone"></label>
 
                     </div>
@@ -71,231 +64,184 @@
                     <div >
 
                         <label>
-                            <input placeholder="location" type="text" onkeyup="validateLocation()" name="location" id="location">
+                            <input placeholder="location" type="text"  name="location" id="location">
                             <label id="errorPromptLocation"></label>
                         </label>
                     </div>
-
-                    <div>
-
-                        <select id="district" style="margin-bottom: 30px; width: 300px;height: 30px;">
-                            <option>District</option>
-                            <option>Ilala</option>
-                            <option>Temeke</option>
-                            <option>Mbeya</option>
-                            <option>Ileje</option>
-                        </select>
-                        <label></label>
-
-                    </div>	
-
-
-
-
-                    <button class="btn btn-success" type="button"   id="register_button" name="btnLogin" style="margin-bottom: 30px;">Register</button>
+                    <button class="btn btn-success"   id="register_button" name="register_button" style="margin-bottom: 30px;">Register</button>
 
                 </form>				 
             </div>
 
-            <div class="right col-md-6">
-                <h2>existing user</h2>
-                <div class="registration_form">
-                    <!-- Form -->
-                    <form id="registration_form" action="categories/account/manage_account.html" method="post">
-                        <div>
-                            <label>
-                                <input placeholder="email:" onkeyup="validateEmail()" type="email" tabindex="3" required>
-                                <label id="errorPromptEmail"></label>
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input placeholder="password" onkeyup="validatePassword()" type="password" tabindex="4" required>
-                                <label id="errorPromptPassword"></label>
-                            </label>
-                        </div>						
-                        <div>
-                            <input type="submit" value="sign in" id="register-submit">
-                        </div>
-                        <div class="forget">
-                            <a href="#">forgot your password</a>
-                        </div>
-                    </form>
+            
                     <!-- /Form -->
-                </div>
-
-            </div>
+           
             <div class="clearfix"></div>
         </div>
 
         <!---->
-        <div class="footer-content">
+       <!-- <div class="footer-content">
             <div class="container">
             </div>
+       -->
         </div>
         <script src="./assets/js/index.js"></script>
 
         <script  type='text/javascript'>
 
 
-                                                                /*
-                                                                 var form = $('#login_form');
-                                                                 jQuery(document).ready(function () {
-                                                                 validatordefault.init();
-                                                                 });
-                                                                 form.validate({
-                                                                 rules: {
-                                                                 fname: {
-                                                                 minlength: 3,
-                                                                 required: true
-                                                                 },
-                                                                 lname: {
-                                                                 minlength: 3,
-                                                                 required: true
-                                                                 },
-                                                                 password: {
-                                                                 minlength: 6,
-                                                                 required: true
-                                                                 },
-                                                                 location: {
-                                                                 minlength: 3,
-                                                                 required: true
-                                                                 },
-                                                                 email: {
-                                                                 minlength: 3,
-                                                                 required: true,
-                                                                 email: true
-                                                                 },
-                                                                 user_type: {
-                                                                 required: true
-                                                                 },
-                                                                 phone_number: {
-                                                                 minlength: 10,
-                                                                 required: true,
-                                                                 number: true
-                                                                 }
-                                                                 name3: {
-                                                                 minlength: 3,
-                                                                 required: true,
-                                                                 notEqualToGroup: ['.distinctname']
-                                                                 }, 
-                                                         
-                                                                 },
-                                                                 messages: {
-                                                         
-                                                                 fname: {
-                                                                 minlength: "validate",
-                                                                 required: "validate"
-                                                                 },
-                                                                 lname: {
-                                                                 minlength: 3,
-                                                                 required: true
-                                                                 },
-                                                                 password: {
-                                                                 minlength: 6,
-                                                                 required: true
-                                                                 },
-                                                                 location: {
-                                                                 minlength: 3,
-                                                                 required: true
-                                                                 },
-                                                                 email: {
-                                                                 minlength: 3,
-                                                                 required: true,
-                                                                 email:true
-                                                                 },
-                                                                 user_type: {
-                                                                 required: true
-                                                                 },
-                                                                 phone_number: {
-                                                                 minlength: 10,
-                                                                 required: true,
-                                                                 number : true
-                                                                 }
-                                                         
-                                                                 },
-                                                                 submitHandler: function (form) {
-                                                                 errorHandler.hide(); 
-                                                                 var fname = $('#fname').val();
-                                                                 var lname = $('#lname').val();
-                                                                 var email = $('#email').val();
-                                                                 var password = $('#password').val();
-                                                                 var phone = $('#phone').val();
-                                                                 var location = $('#location').val();
-                                                                 var level_id = $('#level_id').val();
-                                                                 var param = {
-                                                                 pg: 'register',
-                                                                 method: 'register_client',
-                                                                 fname: fname,
-                                                                 lname: lname,
-                                                                 email: email,
-                                                                 password: password,
-                                                                 phone: phone,
-                                                                 location: location,
-                                                                 level_id: level_id
-                                                                 }
-                                                                 NProgress.start();
-                                                                 uza.get_remote(param, function (data) {
-                                                                 console.log(data);
-                                                                 if (data.status === 1) {
-                                                                 $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
-                                                         
-                                                                 NProgress.done();
-                                                                 loadPage('modules/login/login.html');
-                                                                 }
-                                                                 else if (data.status === 0) {
-                                                                 $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
-                                                         
-                                                                 NProgress.done();
-                                                                 }
-                                                                 });
-                                                                 }
-                                                                 });
-                                                         
-                                                         
-                                                                 */
 
+                   /** var form = $('#registration_form');
+                    jQuery(document).ready(function () {
+                        validatordefault.init();
+                    });
+                    form.validate({
+                    rules: {
+                    first_name: {
+                    minlength: 3,
+                            required: true
+                    },
+                            middle_name: {
+                            minlength: 3,
+                                    required: true
+                            },
+                            last_name: {
+                            minlength: 3,
+                                    required: true
+                            },
+                            email: {
+                                  minlength: 3,
+                                    required: true
+                                    email: true
+                                }
+                                    password: {
+                                    minlength: 6,
+                                            required: true
+                                    },
+                                    phone_number: {
+                                    minlength: 10,
+                                            required: true
+                                            number: true
+                                    },
+                                    location: {
+                                    minlength: 3,
+                                            required: true
+                                    },
+                            },
+                            messages: {
 
-                                                                register = function () {
+                            first_name: {
+                            minlength: "validate",
+                                    required: "validate"
+                            },
+                                    last_name: {
+                                    minlength: 3,
+                                            required: true
+                                    },
+                                    email: {
+                                    minlength: 3,
+                                            required: true,
+                                            email:true
+                                    },
+                                    password: {
+                                    minlength: 6,
+                                            required: true
+                                    },
+                                    phone_number: {
+                                    minlength: 10,
+                                            required: true,
+                                            number : true
+                                    },
+                                    location: {
+                                    minlength: 3,
+                                            required: true
+                                    }
 
-                                                                    $('#register_button').mousedown(function () {
-                                                                        var fname = $('#fname').val();
-                                                                        var lname = $('#lname').val();
-                                                                        var email = $('#email').val();
-                                                                        var password = $('#password').val();
-                                                                        var phone = $('#phone').val();
-                                                                        var location = $('#location').val();
-                                                                        var level_id = $('#level_id').val();
-                                                                        var param = {
-                                                                            pg: 'register',
-                                                                            method: 'register_client',
-                                                                            fname: fname,
-                                                                            lname: lname,
-                                                                            email: email,
-                                                                            password: password,
-                                                                            phone: phone,
-                                                                            location: location,
-                                                                            level_id: level_id
-                                                                        }
-                                                                        NProgress.start();
-                                                                        uza.get_remote(param, function (data) {
-                                                                            console.log(data);
-                                                                            if (data.status === 1) {
-                                                                                $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
+                            },
+                            submitHandler: function () {
+                                errorHandler.hide();
+                                var first_name = $('#first_name').val();
+                                var middle_name = $('#middle_name').val();
+                                var last_name = $('#last_name').val();
+                                var email = $('#email').val();
+                                var password = $('#password').val();
+                                var phone_number = $('#phone_number').val();
+                                var location = $('#location').val();
+                                var param = {
+                                    pg: 'register',
+                                    method: 'register_client',
+                                    first_name: first_name,
+                                    middle_name: middle_name,
+                                    last_name: last_name,
+                                    email: email,
+                                    password: password,
+                                    phone_number: phone_number,
+                                    location: location
+                                };
+                                NProgress.start();
+                                uza.get_remote(param, function (data) {
+                                    console.log(data);
+                                    if (data.status === 1) {
+                                        $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
 
-                                                                                NProgress.done();
-                                                                                loadPage('modules/login/login.html');
-                                                                            }
-                                                                            else if (data.status === 0) {
-                                                                                $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
+                                        NProgress.done();
+                                        loadPage('modules/login/login.html');
+                                    }
+                                    else if (data.status === 0) {
+                                        $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
 
-                                                                                NProgress.done();
-                                                                            }
-                                                                        });
-                                                                    });
-                                                                };
-                                                                $(document).ready(register);
+                                        NProgress.done();
+                                    }
+                                });
+                            }}
+                    });
+    
+                    **/
+                             register = function () {
+                                
+                                $('#register_button').mousedown(function () {
+                                    
+                              
+                                    var first_name = $('#first_name').val();
+                                    var middle_name = $('#middle_name').val();
+                                    var last_name = $('#last_name').val();
+                                    var email = $('#email').val();
+                                    var password = $('#password').val();
+                                    var phone_number = $('#phone_number').val();
+                                    var location = $('#location').val();
+                                    var param = {
+                                        pg: 'register',
+                                        method: 'register_client',
+                                        first_name: first_name,
+                                        middle_name: middle_name,
+                                        last_name: last_name,
+                                        email: email,
+                                        password: password,
+                                        phone_number: phone_number,
+                                        location: location
+                                    };
+                                    NProgress.start();
+                                    uza.get_remote(param, function (data) {
+                                       
+                                        console.log(data);
+                                        if (data.status === 1) {
+                                            $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
 
+                                            NProgress.done();
+                                            loadPage('modules/login/login.html');
+                                        }
+                                        else if (data.status === 0) {
+                                            $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
+
+                                            NProgress.done();
+                                        }
+                                    });
+                                });
+                            };
+                    $(document).ready(register);
+                    
+                   
+                   
         </script>
 
 

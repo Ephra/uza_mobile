@@ -2,34 +2,34 @@
 
 function validateName() {
 
-    var name = document.getElementById("name").value;
-    if (name.length == 0) {
+    var first_name = document.getElementById("first_name").value;
+    if (first_name.length == 0) {
 
         producePrompt("Name is required", "errorPromptName", "red");
         return false;
     }
 
-    if (!name.match(/^[A-Za-z]*$/)) {
+    if (!first_name.match(/^[A-Za-z]*$/)) {
 
         producePrompt("Name is invalid", "errorPromptName", "red");
         return false;
 
     }
 
-    producePrompt("Welcome" + name, "errorPromptName", "green");
+    producePrompt("Welcome " + First_name, "errorPromptName", "green");
 
 }
 
 function validateLastName() {
 
-    var name = document.getElementById("name").value;
-    if (name.length == 0) {
+    var last_name = document.getElementById("last_name").value;
+    if (last_name.length == 0) {
 
         producePrompt("Last Name is required", "errorPromptLastName", "red");
         return false;
     }
 
-    if (!name.match(/^[A-Za-z]*$/)) {
+    if (!last_name.match(/^[A-Za-z]*$/)) {
 
         producePrompt("Last Name is invalid", "errorPromptLastName", "red");
         return false;
@@ -41,16 +41,16 @@ function validateLastName() {
 }
 
 function  validatePhone() {
-    var phone = document.getElementById('phone').value;
+    var phone_number = document.getElementById('phone_number').value;
 
-    if (phone.length != 10) {
+    if (phone_number.length != 10) {
 
         producePrompt("Number is too short", "errorPromptPhone", "red");
         return false;
 
     }
 
-    if (!phone.match(/^[0-9]{10}$/)) {
+    if (!phone_number.match(/^[0-9]{10}$/)) {
 
         producePrompt("phone number should have only number", "errorPromptPhone", "red");
         return false;
@@ -78,13 +78,13 @@ function validateEmail() {
 
     }
 
-    producePrompt("Your email:" + email, "errorPromptEmail", "green");
+    producePrompt("Your email: " + email, "errorPromptEmail", "green");
 }
 
 function validatePassword() {
 
     var password = document.getElementById('password').value;
-    if (password.length == 0) {
+    if (password.length === 0) {
 
         producePrompt("Password is required ", "errorPromptPassword", "red");
         password.focus;
