@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+=======
+        <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Miss%20Asha/Desktop/uza/www/index.html</file>
+            <file>file:/C:/Users/Miss%20Asha/Desktop/uza/www/search_result.html</file>
+=======
+            <file>file:/C:/xampp/htdocs/uza/www/modules/product/product.html</file>
+            <file>file:/C:/xampp/htdocs/uza/www/single_product.html</file>
+>>>>>>> 89d455a702e43551ba9e123bcc37f27a07e848a9
+        </group>
+>>>>>>> ea828dd96828493d189fab2d7892e659bd2e8ac8
         <group/>
     </open-files>
 </project-private>
