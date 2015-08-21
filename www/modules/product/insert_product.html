@@ -17,54 +17,47 @@
 
                 $("#status").selectmenu();
             });
-
-
             upload_product = function () {
-       
-                        $('#upload_product_form').ajaxForm(function(e){
-                            var formObj=$(this);
-                            var formURL=url+'pg=upload_product&method=product_upload';
-                            var formData=new FormData(this);
-                           
-                            
-                            $.ajax({
-                               url:formURL,
-                               type:'POST',
-                               data:formData,
-                               contentType:false,
-                               cache:false,
-                               progressData:false,
-                               success:function(){
-                                  
-                                   $('.success').html('<b>Product is successfully uploaded</b>').fadeOut(3000);
-                                  // loadPage('modules/product/insert_product.html');
-                                  
-                            },
-                                error:function(){
-                                  $('.success').html('<b>Product is not uploaded</b>').fadeOut(3000);
-                                   //loadPage('modules/product/insert_product.html');
-                                  
-                                  
-                              }
-                           
-                                
-                       
-                            
-                            
-                            
-                        });
-                        
+
+                $('#upload_product_form').ajaxForm(function (e) {
+                    var formObj = $(this);
+                    var formURL = url + 'pg=upload_product&method=product_upload';
+                    var formData = new FormData(this);
+
+
+                    $.ajax({
+                        url: formURL,
+                        type: 'POST',
+                        data: formData,
+                        contentType: false,
+                        cache: false,
+                        progressData: false,
+                        success: function () {
+
+                            $('.success').html('<b>Product is successfully uploaded</b>').fadeOut(3000);
+                            // loadPage('modules/product/insert_product.html');
+
+                        },
+                        error: function () {
+                            $('.success').html('<b>Product is not uploaded</b>').fadeOut(3000);
+                            //loadPage('modules/product/insert_product.html');
+
+
+                        }
+
+
+
+
+
+
                     });
-           
+
+                });
+
             }
 
         </script>
     </head>
-
-
-
-
-
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="index.html">Home</a></li>
@@ -86,17 +79,13 @@
                                 <input placeholder="Product Title:" type="text" id="title" name="title">
                             </label>
                         </div>
-                        
-                         <div>
+
+                        <div>
                             <label>
                                 <input type="hidden" id="title" name="pg" value="upload_product">
                             </label>
                         </div>
-
-
- 
-                        
-                         <div>
+ <div>
                             <label>
                                 <select id="sale_sub_cat" style='width: 300px'>
                                     <option value="">Sales Sub-category</option>
@@ -116,13 +105,11 @@
                             </label>
                         </div>
 
-                        <div>
-                            <label>
+                        <div><label>
 
 
                                 <select name="status" id="status" style='width: 300px'>
                                     <option value="state">State</option>
-
 
                                     <option value="new">New</option>
                                     <option value="used">Used</option>

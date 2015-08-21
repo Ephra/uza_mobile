@@ -18,13 +18,10 @@
  */
 
 
+//var SITE_URL = 'http://uza_application/index.php?';
 var SITE_URL = 'http://uza.inetstz.com/index.php?';
 
-
-
 var method_ = 'post';
-
-
 var user = '';
 var name='';
 var cat_id='';
@@ -176,6 +173,7 @@ uza = {
 		var name = val.sales_cat_name.replace(/'/g, "\\'");
 		if ($('#' + val.sales_cat_id).length == 0) {
 		    $('#nav_menu').append('<li id="' + val.sales_cat_id + '" class="active grid"><a class="color1" href="javascript:;" onmousedown="uza.loadPage(\'modules/product/product.html\',{cat_id:\'' + val.sales_cat_id + '\',type:\'product\',name:\''+ name+'\'})">' + val.sales_cat_name + '</a></li>');
+
 		}
 	    });
 	});
