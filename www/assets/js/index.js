@@ -24,7 +24,6 @@ var user = '';
 var name = '';
 var cat_id = '';
 var param = [];
-
 var app = {
     // Application Constructor
     initialize: function () {
@@ -36,7 +35,6 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
 	document.addEventListener('deviceready', this.onDeviceReady, false);
-
     },
     // deviceready Event Handler
     //
@@ -50,16 +48,12 @@ var app = {
 	var parentElement = document.getElementById(id);
 	var listeningElement = parentElement.querySelector('.listening');
 	var receivedElement = parentElement.querySelector('.received');
-
 	listeningElement.setAttribute('style', 'display:none;');
 	receivedElement.setAttribute('style', 'display:block;');
-
 	console.log('Received Event: ' + id);
     }
 };
-
 app.initialize();
-
 uza = {
     /**
      * 
@@ -70,7 +64,6 @@ uza = {
     get_remote: function (param, callback, method_) {
 	window.method_ = (typeof method_ === "undefined") ? 'get' : method_;
 	window.param = (typeof param === "undefined") ? [] : param;
-
 	$.ajax({
 	    cache: true,
 	    // url: SITE_URL + $.param(param),
@@ -90,11 +83,12 @@ uza = {
      * @returns {undefined}
      */
     loadPage: function (url, param) {
-	NProgress.start();
+	//NProgress.start();
+	
 	var div = '.body_content';
 	window.param = (typeof param === "undefined") ? null : param;
-	window.cat_id = (typeof cat_id === "undefined") ? null : param.cat_id;
-	window.name = (typeof name === "undefined") ? null : param.name;
+	window.cat_id = (typeof param ==='undefined') ? null : param.cat_id;
+	window.name = (typeof param ==='undefined')  ? null : param.name;
 	$.ajax({
 	    url: url,
 	    dataType: 'html',
@@ -103,11 +97,10 @@ uza = {
 	    cache: true,
 	    success: function (data, textStatus, XMLHttpRequest) {
 		/*NProgress.done();*/
-
-		$(div).off();  /*Calling .off() with no arguments removes all handlers attached to the elements.*/
-		$(div).empty();  /*clearing the content of the div*/
+		$(div).off(); /*Calling .off() with no arguments removes all handlers attached to the elements.*/
+		$(div).empty(); /*clearing the content of the div*/
 		$(div).html(data);
-		NProgress.done();
+		//NProgress.done();
 //let us translate that part that comes with ajax
 	    },
 	    error: function (xhr, textStatus, errorThrown) {
@@ -123,6 +116,22 @@ uza = {
 
 	    }
 	});
+    },
+    hash: function () {
+	//$(window).hashchange();
+	var q = window.location.hash.substring(1);
+	if (q !== '') {
+	    this.loadPage(q + '.html');
+	}else{
+	     this.loadPage('body.html');
+	}
+	$(window).on('hashchange', function () {
+	    if (location.hash !== '') {
+		var q = window.location.hash.substring(1);
+		this.loadPage(q + '.html');
+	    }
+	});
+
     },
     /**
      * 
@@ -165,7 +174,6 @@ uza = {
 	    'pg': 'landing',
 	    'method': 'get_navigation'
 	};
-
 	/**this.get_remote(pages, function (data) {
 	 // console.log(data);
 	 $.each(data, function (i, val) {
@@ -196,6 +204,7 @@ uza = {
 	}
     }
 };
+uza.hash();
 user = uza.getCookie('user');
 console.log(user);
 //uza.getNavigationPages();

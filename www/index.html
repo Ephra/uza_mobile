@@ -32,6 +32,7 @@
         <script src="assets/js/jquery.validate.min.js"></script>
         <script src="assets/js/validator-default.js"></script>
 	<script src="assets/js/index.js"></script>
+	<script src="assets/js/hashchange.js"></script>
     </head>
 
     <body>
@@ -41,15 +42,15 @@
                 <div class="header_top-sec">
                     <div class="top_right">
                         <ul>
-                            <li><a href="javascript:void(0)"  onmousedown="loadPage('modules/account/account.html')">help</a></li>
-                            <li><a href="javascript:void(0)"  onmousedown="loadPage('modules/contact/contact.html')">Contact</a></li>
+                            <li><a href="#modules/account/account"  onmousedown="loadPage('modules/account/account.html')">help</a></li>
+                            <li><a href="#modules/contact/contact"  onmousedown="loadPage('modules/contact/contact.html')">Contact</a></li>
 
 
                         </ul>
                     </div>
                     <div class="top_left">
                         <ul>
-                            <li class="top_link"><a href="javacsript:void(0)" onclick="return false" onmousedown="loadPage('modules/product/insert_product.html')">Sell a Product</a></li>
+                            <li class="top_link"><a href="#modules/product/insert_product" onclick="return false" onmousedown="loadPage('modules/product/insert_product.html')">Sell a Product</a></li>
                             <li id="create_account"></li>
                             <li id="manage_account_link"></li>
                             <li class="top_link" id="my_account"></li>	
@@ -76,13 +77,13 @@
 			    set_pages = function () {
 				if (user == '') {
 				    //this user is not yet login in, so show these buttons
-				    $('#login').html('<a onclick="return false" href="javascript:void(0)" onmousedown="loadPage(\'modules/login/login.html\')">LOGIN</a>');
-				    $('#create_account').html('<a  href="javascript:void(0)" onmousedown="loadPage(\'modules/signup/signup.html\')">Create an Account</a>');
+				    $('#login').html('<a onclick="return false" href="#modules/login/login" onmousedown="loadPage(\'modules/login/login.html\')">LOGIN</a>');
+				    $('#create_account').html('<a  href="#modules/signup/signup.html" onmousedown="loadPage(\'modules/signup/signup.html\')">Create an Account</a>');
 				} else {
 				    //this user is already login, so show these pages
 				    $('#login').html(' <a onclick="return false" href="javascript:void(0)" onmousedown="uza.logout()">LOGOUT</a>');
-				    $('#my_account').html('<a href="javascript:void(0)" onclick="return false" onmousedown="loadPage(\'modules/account/account.html\')">My Account</a>');
-				    $('#manage_acccount_link').html('<a  href="javascript:void(0)" onmousedown="loadPage(\'modules/account/manage_account.html\')">Manage Account</a>');
+				    $('#my_account').html('<a href="#modules/account/account" onclick="return false" onmousedown="loadPage(\'modules/account/account.html\')">My Account</a>');
+				    $('#manage_acccount_link').html('<a  href="#modules/account/manage_account" onmousedown="loadPage(\'modules/account/manage_account.html\')">Manage Account</a>');
 				}
 			    }
 			    $(document).ready(set_pages);
