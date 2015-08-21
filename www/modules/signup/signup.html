@@ -1,161 +1,136 @@
+<script src="js/form_validation.js"></script>
+<script>
+    $(document).ready(function () {
+
+	$("#district").selectmenu();
+    });
+</script>
+
+<div class="login_sec">
+    <div class="container">
+	<ol class="breadcrumb">
+	    <li><a href="javascript:void(0)" onmousedown="loadPage('index.html')">Home</a></li>
+	    <li class="active">Create an Account</li>
+	</ol>
+	<h2>Create an Account</h2>
+	<div class="col-md-6 log">			 
+	    <p>Welcome, please enter the following to continue.</p>
+	    <p>If you have previously Login with us, <span>click here</span></p>
+	    <form id ="registration_form">
+
+		<div >
+
+		    <input placeholder="First name:"  type="text"  id="first_name" name="first_name" >
+		    <label id="errorPromptName"></label>
+		</div>
+
+		<div >
+
+		    <input placeholder="Middle name:"  type="text"  id="middle_name" name="middle_name" >
 
 
-    <script src="js/form_validation.js"></script>
-    <script>
-	$(document).ready(function () {
-
-	    $("#district").selectmenu();
-	});</script>
-
-        <div class="container">
-            <ol class="breadcrumb">
-                <li><a href="javascript:void(0)" onmousedown="loadPage('index.html')">Home</a></li>
-                <li class="active">Create an Account</li>
-            </ol>
-            <h2>Create an Account</h2>
-            <div class="col-md-6 log">			 
-                <p>Welcome, please enter the following to continue.</p>
-                <p>If you have previously Login with us, <span>click here</span></p>
-                <form id="login_form">
-
-                    <div >
-
-                        <input placeholder="First name:" onkeyup='validateName()' type="text"  id="name" name="fname" >
-                        <label id="errorPromptName"></label>
-                    </div>
-
-                    <div >
-
-                        <input placeholder="Middle name:"  type="text"  id="middle_name" name="middle_name" >
+		</div>
+		<div >
+		    <input placeholder="Last name:" type="text"   id="last_name" name="last_name" >
 
 
-                    </div>
-                    <div >
+		    <label id='errorPromptLastName'></label>
 
-                        <input placeholder="Last name:" type="text" onkeyup="validateLastName()"  id="name" name="lname" >
-                        <label id='errorPromptLastName'></label>
-
-                    </div>
-
-                    <div>
-
-                        <input placeholder="Email" type="text" onkeyup="validateEmail()" name="email" id="email" >
-                        <label id='errorPromptEmail'></label>
-
-                    </div>
-                    <div >
-
-                        <input placeholder="Password" type="password" onkeyup="validatePassword()" name="password" id="password" >
-                        <label id="errorPromptPassword"></label>
-
-                    </div>
-                    <div >
-
-                        <input placeholder="Comfirm Password" type="password" onkeyup='validatePassword()' name="confirm_password" id="confirm_password" >
-                        <label id="errorPromptPassword"></label>
-
-                        <input placeholder="Phone Number:" type="text" onkeyup="validatePhone()" name="phone" id="phone">
-                        <label id="errorPromptPhone"></label>
-
-                    </div>
-
-                    <div >
-
-                        <label>
-                            <input placeholder="location" type="text" onkeyup="validateLocation()" name="location" id="location">
-                            <label id="errorPromptLocation"></label>
-                        </label>
-                    </div>
+		</div>
+		<div>
 
 
+		    <input placeholder="Email" type="text"  name="email" id="email" >
 
-                    <button class="btn btn-success" type="button"   id="register_button" name="btnRegister" style="margin-bottom: 30px;">Register</button>
+		    <label id='errorPromptEmail'></label>
+
+		</div>
+		<div >
 
 
-                </form>				 
-            </div>
+		    <input placeholder="Password" type="password"  name="password" id="password" >
+		    <label id="errorPromptPassword"></label>
 
-            <div class="right col-md-6">
-                <h2>existing user</h2>
-                <div class="registration_form">
-                    <!-- Form -->
+		</div>
+		<div>
+		    <input placeholder="Comfirm Password" type="password"  name="confirm_password" id="confirm_password" >
+		    <label id="errorPromptPassword"></label>
 
-                    <form id="registration_form" action="categories/account/manage_account.html" method="post">
-                        <div>
-                            <label>
-                                <input placeholder="email:" onkeyup="validateEmail()" type="email" tabindex="3" required>
-                                <label id="errorPromptEmail"></label>
+		</div>	
 
-                        </div>
-                        <div>
-                            <label>
+		<div>
 
-                                <input placeholder="password" onkeyup="validatePassword()" type="password" tabindex="4" required>
-                                <label id="errorPromptPassword"></label>
-                                =
-                            </label>
-                        </div>						
-                        <div>
-                            <input type="submit" value="sign in" id="register-submit">
-                        </div>
-                        <div class="forget">
-                            <a href="#">forgot your password</a>
-                        </div>
-                    </form>
-                    <!-- /Form -->
-                </div>
+		    <input placeholder="Phone Number:" type="text"  name="phone_number" id="phone_number">
 
-            </div>
-            <div class="clearfix"></div>
-        </div>
+		    <label id="errorPromptPhone"></label>
 
-        <!---->
-        <div class="footer-content">
-            <div class="container">
-            </div>
-        </div>
-        <script src="./assets/js/index.js"></script>
+		</div>
 
-        <script  type='text/javascript'>
+		<div >
 
-				    register = function () {
+		    <label>
+			<input placeholder="location" type="text"  name="location" id="location">
+			<label id="errorPromptLocation"></label>
+		    </label>
+		</div>
+		<button class="btn btn-success"   id="register_button" name="register_button" style="margin-bottom: 30px;">Register</button>
 
-					$('#register_button').mousedown(function () {
+	    </form>		 
+	</div>
 
-					    var fname = $('#fname').val();
-					    var lname = $('#lname').val();
-					    var email = $('#email').val();
-					    var password = $('#password').val();
-					    var phone = $('#phone').val();
-					    var location = $('#location').val();
 
-					    var param = {
-						pg: 'register',
-						method: 'register_client',
-						fname: fname,
-						lname: lname,
-						email: email,
-						password: password,
-						phone: phone,
-						location: location,
-					    }
-					    NProgress.start();
-					    uza.get_remote(param, function (data) {
-						console.log(data);
-						if (data.status === 1) {
-						    $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
-						    NProgress.done();
-						    loadPage('modules/login/login.html');
-						}
-						else if (data.status === 0) {
-						    $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
-						    NProgress.done();
-						}
-					    });
-					});
-				    };
-				    register();
-        </script>
+	<!-- /Form -->
+
+	<div class="clearfix"></div>
+    </div>
+
+    <!---->
+    <!--<div class="footer-content">
+	      <div class="container">
+	      </div>
+    -->
+
+    <script src="./assets/js/index.js"></script>
+
+    <script  type='text/javascript'>
+		register = function () {
+
+		    $('#register_button').mousedown(function () {
+
+			var fname = $('#fname').val();
+			var lname = $('#lname').val();
+			var email = $('#email').val();
+			var password = $('#password').val();
+			var phone = $('#phone').val();
+			var location = $('#location').val();
+
+			var param = {
+			    pg: 'register',
+			    method: 'register_client',
+			    fname: fname,
+			    lname: lname,
+			    email: email,
+			    password: password,
+			    phone: phone,
+			    location: location,
+			}
+			NProgress.start();
+			uza.get_remote(param, function (data) {
+			    console.log(data);
+			    if (data.status === 1) {
+				$('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
+				NProgress.done();
+				loadPage('modules/login/login.html');
+			    }
+			    else if (data.status === 0) {
+				$('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
+				NProgress.done();
+			    }
+			});
+		    });
+		};
+		register();
+    </script>
 
 
 

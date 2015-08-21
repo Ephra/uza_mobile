@@ -84,7 +84,6 @@ uza = {
      */
     loadPage: function (url, param) {
 	//NProgress.start();
-	
 	var div = '.body_content';
 	window.param = (typeof param === "undefined") ? null : param;
 	window.cat_id = (typeof param ==='undefined') ? null : param.cat_id;
@@ -102,6 +101,7 @@ uza = {
 		$(div).html(data);
 		//NProgress.done();
 //let us translate that part that comes with ajax
+//alert(data);
 	    },
 	    error: function (xhr, textStatus, errorThrown) {
 		/*Owden*/
@@ -119,11 +119,12 @@ uza = {
     },
     hash: function () {
 	//$(window).hashchange();
+	
 	var q = window.location.hash.substring(1);
 	if (q !== '') {
 	    this.loadPage(q + '.html');
 	}else{
-	     this.loadPage('body.html');
+	   //  this.loadPage('body.html');
 	}
 	$(window).on('hashchange', function () {
 	    if (location.hash !== '') {

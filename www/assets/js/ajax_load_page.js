@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
     $(".megamenu").megamenu();  
+   // loadPage('body.html');
 });
 loadPage = function (url) {
     NProgress.start();

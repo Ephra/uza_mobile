@@ -16,9 +16,9 @@
         <meta name="keywords" content="Furnyish Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
               Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <link href='http://fonts.googleapis.com/css?family=Montserrat|Raleway:400,200,300,500,600,700,800,900,100' rel='stylesheet' type='text/css'>
+      <!--  <link href='http://fonts.googleapis.com/css?family=Montserrat|Raleway:400,200,300,500,600,700,800,900,100' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Aladin' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Aladin' rel='stylesheet' type='text/css'> -->
         <!-- start menu -->
         <link href="assets/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" src="assets/js/megamenu.js"></script>
@@ -31,8 +31,8 @@
 	<!-- <script src="assets/js/responsiveslides.min.js"></script>-->
         <script src="assets/js/jquery.validate.min.js"></script>
         <script src="assets/js/validator-default.js"></script>
+	<script src="assets/js/hashchange.js"></script>      
 	<script src="assets/js/index.js"></script>
-	<script src="assets/js/hashchange.js"></script>
     </head>
 
     <body>
@@ -44,19 +44,17 @@
                         <ul>
                             <li><a href="#modules/account/account"  onmousedown="loadPage('modules/account/account.html')">help</a></li>
                             <li><a href="#modules/contact/contact"  onmousedown="loadPage('modules/contact/contact.html')">Contact</a></li>
-
-
                         </ul>
                     </div>
                     <div class="top_left">
                         <ul>
+
                             <li class="top_link"><a href="#modules/product/insert_product" onclick="return false" onmousedown="loadPage('modules/product/insert_product.html')">Sell a Product</a></li>
                             <li id="create_account"></li>
                             <li id="manage_account_link"></li>
                             <li class="top_link" id="my_account"></li>	
 			    <li class="top_link"><span id="login"></span></li>			    
                         </ul>
-
                     </div>
                     <div class="clearfix"> </div>
                 </div>
@@ -66,72 +64,92 @@
             <div class="container">
                 <div class="logo">
                     <a onclick="return false" onmousedown="loadPage('index.html')"><img src="assets/img/logo.png" alt=""/></a>
-                </div>
+                </div>      
+		<script type='text/javascript'>
 
+		    find = function () {
+			$('#find').mousedown(function () {
+			    var search = $('#search').val();
+			    var param = {search: search, pg: 'products', method: 'search_product'};
+			    NProgress.start();
+			    uza.get_remote(param, function (data) {
+				alert('done');
+				console.log(data);
+				if (data.status === 1) {
+				    console.log(data);
 
-                <div class="header_right">
-
-                    <div style='margin-right: 100px;'></div>
-		    <div class="header_right">	
-			<script>
-			    set_pages = function () {
-				if (user == '') {
-				    //this user is not yet login in, so show these buttons
-				    $('#login').html('<a onclick="return false" href="#modules/login/login" onmousedown="loadPage(\'modules/login/login.html\')">LOGIN</a>');
-				    $('#create_account').html('<a  href="#modules/signup/signup.html" onmousedown="loadPage(\'modules/signup/signup.html\')">Create an Account</a>');
-				} else {
-				    //this user is already login, so show these pages
-				    $('#login').html(' <a onclick="return false" href="javascript:void(0)" onmousedown="uza.logout()">LOGOUT</a>');
-				    $('#my_account').html('<a href="#modules/account/account" onclick="return false" onmousedown="loadPage(\'modules/account/account.html\')">My Account</a>');
-				    $('#manage_acccount_link').html('<a  href="#modules/account/manage_account" onmousedown="loadPage(\'modules/account/manage_account.html\')">Manage Account</a>');
+				    loadPage('serch_result.html');
+				    NProgress.done();
 				}
+				else if (data.status === 0) {
+				    $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"').fadeOut(7000);
+
+				    NProgress.done();
+				}
+			    });
+			});
+		    };
+		    $(document).ready(find);
+		</script>
+
+		<div style='margin-right: 100px;'></div>
+		<div class="header_right">	
+		    <script>
+			set_pages = function () {
+			    if (user == '') {
+				//this user is not yet login in, so show these buttons
+				$('#login').html('<a onclick="return false" href="#modules/login/login" onmousedown="loadPage(\'modules/login/login.html\')">LOGIN</a>');
+				$('#create_account').html('<a  href="#modules/signup/signup.html" onmousedown="loadPage(\'modules/signup/signup.html\')">Create an Account</a>');
+			    } else {
+				//this user is already login, so show these pages
+				$('#login').html(' <a onclick="return false" href="javascript:void(0)" onmousedown="uza.logout()">LOGOUT</a>');
+				$('#my_account').html('<a href="#modules/account/account" onclick="return false" onmousedown="loadPage(\'modules/account/account.html\')">My Account</a>');
+				$('#manage_acccount_link').html('<a  href="#modules/account/manage_account" onmousedown="loadPage(\'modules/account/manage_account.html\')">Manage Account</a>');
 			    }
-			    $(document).ready(set_pages);
-			</script>
+			}
+			$(document).ready(set_pages);
+		    </script>
 
 
 
 
-			<div class="cart box_1">
-			    <a onclick="return false" href="javascript:void(0)" onmousedown="loadPage('modules/product/cart.html')" class="cart_link">
-				<h3> <span class="ssimpleCart_total">0.00Tsh</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span> items)<img src="assets/img/bag.png" alt=""></h3>
-			    </a>	
-			    <p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
-			    <div class="clearfix"> </div>
-			</div>				 
+		    <div class="cart box_1">
+			<a onclick="return false" href="javascript:void(0)" onmousedown="loadPage('modules/product/cart.html')" class="cart_link">
+			    <h3> <span class="ssimpleCart_total">0.00Tsh</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span> items)<img src="assets/img/bag.png" alt=""></h3>
+			</a>	
+			<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
+			<div class="clearfix"> </div>
+		    </div>				 
+		</div>
+		<div class="clearfix"></div>	
+	    </div>
+	</div>
+
+	<!-- start navigation menu -->
+	<div class="mega_nav">
+	    <div class="container">
+		<div class="menu_sec">
+		    <ul class="megamenu skyblue" id="nav_menu">
+			<li class="active grid"><a class="color1" href="javascript:;" onmousedown="loadPage('body.html')">Home</a></li>
+			<li class="grid"><a class="color2"  href="javascript:;" onmousedown="uza.loadPage('modules/product/product.html', {cat_id: 1, type: 'product', name: 'Electronics'})">electronics</a></li>
+			<li><a class="color4" href="javascript:;" onmousedown="uza.loadPage('modules/product/product.html', {cat_id: 2, type: 'product', name: 'Books'})">books</a></li>				
+			<li><a class="color5" href="javascript:;" onmousedown="uza.loadPage('modules/product/product.html', {cat_id: 3, type: 'product', name: 'Women\'s Fashion'})">Women's Fashion</a></li>	
+			<li><a class="color3" href="javascript:;"onmousedown="uza.loadPage('modules/product/product.html', {cat_id: 4, type: 'product', name: 'Men\'s Fashion'})">Men's Fashion</a></li>				
+		    </ul> 
+		    <div class="search">
+			<form>	
+                            <input  id="search" type="text" value="" placeholder="Search...">
+                            <input type="submit" id="find" value="">
+			</form>
 		    </div>
-		    <div class="clearfix"></div>	
+		    <div class="clearfix"></div>
 		</div>
 	    </div>
-
-	    <!-- start navigation menu -->
-	    <div class="mega_nav">
-		<div class="container">
-		    <div class="menu_sec">
-			<ul class="megamenu skyblue" id="nav_menu">
-			    <li class="active grid"><a class="color1" href="javascript:;" onmousedown="loadPage('body.html')">Home</a></li>
-			    <li class="grid"><a class="color2"  href="javascript:;" onmousedown="uza.loadPage('modules/product/product.html', {cat_id: 1, type: 'product', name: 'Electronics'})">electronics</a></li>
-			    <li><a class="color4" href="javascript:;" onmousedown="uza.loadPage('modules/product/product.html', {cat_id: 2, type: 'product', name: 'Books'})">books</a></li>				
-			    <li><a class="color5" href="javascript:;" onmousedown="uza.loadPage('modules/product/product.html', {cat_id: 3, type: 'product', name: 'Women\'s Fashion'})">Women's Fashion</a></li>	
-			    <li><a class="color3" href="javascript:;"onmousedown="uza.loadPage('modules/product/product.html', {cat_id: 4, type: 'product', name: 'Men\'s Fashion'})">Men's Fashion</a></li>				
-
-
-			</ul> 
-			<div class="search">
-			    <form>
-				<input type="text" value="" placeholder="Search...">
-				<input type="submit" value="">
-			    </form>
-			</div>
-			<div class="clearfix"></div>
-		    </div>
-		</div>
+	</div>
+	<div class="body_content"></div>
+	<div class="footer-content">
+	    <div class="container">
 	    </div>
-	    <div class="body_content"></div>
-	    <div class="footer-content">
-		<div class="container">
-		</div>
-	    </div>
-        </div>
+	</div>
     </body>
 </html>
