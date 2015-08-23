@@ -1,0 +1,25 @@
+
+<div class="product-model">	 
+    <div class="container">
+	<br/><br/>
+        <h2>Search Results</h2>			
+        <div class="col-md-9 product-model-sec" id="search_results">
+           
+        </div>
+        
+    </div>
+</div>
+<script type="text/javascript">
+    search_results=function(){
+	
+	var item='';
+	var products=param.param.product;
+	console.log(products);
+	$.each(products,function(i,val){
+	    console.log(val);
+	    item+='<a href="single_product.html"><div class="product-grid love-grid"><div class="more-product"><span> </span></div> <div class="product-img b-link-stripe b-animate-go  thickbox"> <img src="'+ROOT_LIVE_URL+val.product_image_path+'" class="img-responsive" alt=""/> <div class="b-wrapper"> <h4 class="b-animate b-from-left  b-delay03"> <button class="btns"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</button></h4> </div> </div><div class="product-info simpleCart_shelfItem"> <div class="product-info-cust prt_name"> <h4>' + val.product_name + '</h4> <p>ID: ' + val.product_id + '</p>  <span class="item_price">' + val.product_price + ' Tsh</span> <input type="text" class="item_quantity" value="1" /> <input type="button" class="item_add items" value="Buy" onmousedown="uza.addProduct({product_id:\''+val.id+'\',name:\''+val.product_name+'\',price:\''+val.product_price+'\',cat_id:\''+cat_id+'\',description:\''+val.product_description+'\',quantity:$(\'#item'+val.product_id+'\').val(),url:\''+ROOT_LIVE_URL+val.product_image_path+'\'})">   </div> <div class="clearfix"> </div> </div></div></a>';
+	});
+	$('#search_results').html(item);
+    }
+    search_results();
+</script>

@@ -79,9 +79,11 @@
 		    uza.get_remote({pg: 'products', method: 'get_product', sales_subcat_id: cat_id}, function (data) {
 			if (data.status == 1) {
 			    //product exists
+			 
 			    var item = data.products;
+			    //console.log(item);
 			    $.each(item, function (i, val) {
-				products += '<a href="#" ><div class="product-grid love-grid"><div class="more-product"><span> </span></div><div class="product-img b-link-stripe b-animate-go  thickbox"><img src="././assets/img/p1.jpg" class="img-responsive" alt=""/><div class="b-wrapper"><h4 class="b-animate b-from-left  b-delay03">	<button class="btns" onclick="loadPage(\'././single_product.html\')"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</button></h4></div></div> <div class="product-info simpleCart_shelfItem"><div class="product-info-cust prt_name"><h4>' + val.product_name + '</h4>  <p>' + val.product_description + '</p><span class="item_price">Tsh ' + val.product_price + '</span><input type="text" class="item_quantity" value="1" /><input type="button" class="item_add items buy" data-id="' + val.product_id + '" onclick="uza.addProduct(' + val.product_id + ')"  value="Buy"></div><div class="clearfix"> </div> </div></div></a>';
+				products += '<a href="#" ><div class="product-grid love-grid"><div class="more-product"><span> </span></div><div class="product-img b-link-stripe b-animate-go  thickbox"><img src="'+ROOT_LIVE_URL+val.image_path+'" class="img-responsive" alt=""/><div class="b-wrapper"><h4 class="b-animate b-from-left  b-delay03">	<button class="btns" onclick="uza.loadPage(\'modules/product/single_product.html\',{product_id:\''+val.id+'\',cat_id:\''+cat_id+'\'})"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</button></h4></div></div> <div class="product-info simpleCart_shelfItem"><div class="product-info-cust prt_name"><h4>' + val.name + '</h4>  <p>' + val.description + '</p><span class="item_price">Tsh ' + val.price + '</span><input type="text" class="item_quantity" id="item'+val.id+'" value="1" /><input type="button" class="item_add items buy" data-id="' + val.id + '" onclick="uza.addProduct({product_id:\''+val.id+'\',name:\''+val.name+'\',price:\''+val.price+'\',cat_id:\''+cat_id+'\',description:\''+val.description+'\',quantity:$(\'#item'+val.id+'\').val(),url:\''+ROOT_LIVE_URL+val.image_path+'\'})"  value="Buy"></div><div class="clearfix"> </div> </div></div></a>';
 			    });
 
 			} else {

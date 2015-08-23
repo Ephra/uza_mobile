@@ -1,0 +1,105 @@
+<div class="single-sec">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Products</li>
+        </ol>
+        <!-- start content -->	
+        <div class="col-md-9 det">
+            <div class="single_left">
+		<img class="etalage_thumb_image" style="width: 20em;" id="single_product_img"  class="img-responsive"/>
+
+            </div>
+            <div class="single-right">
+                <h3 id="product_title"></h3>
+                <div class="id"><h4 id="product_id"></h4></div>
+                <div class="cost">
+                    <div class="prdt-cost">
+                        <ul>
+
+                            <li>Selling Price:</li>
+                            <li class="active" id="product_price"></li>
+                            <a href="#" id="buy_now" onclick="uza.addProduct(product_id)">BUY NOW</a>
+                        </ul>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+                <div class="single-bottom1">
+                    <h6>Details</h6>
+                    <p class="prod-desc" id="prod-desc"></p>
+                </div>					 
+            </div>
+            <div class="clearfix"></div>
+            <div class="sofaset-info">
+
+            </div>				  					
+        </div>
+        <div class="rsidebar span_1_of_left">
+            <section  class="sky-form">
+                <div class="product_right">
+                    <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categories</h4>		
+
+                    <div id="navigation_tabs_single">
+                    </div>
+                </div>
+            </section> 				  
+        </div>
+    </div>	     				
+    <div class="clearfix"></div>
+</div>	 
+<script  type='text/javascript'>
+    singleView = function () {
+
+	var param = {pg: 'products', method: 'single_product', product_id: product_id};
+	// NProgress.start();
+	uza.get_remote(param, function (data) {
+	    console.log(data);
+	    $('#product_title').html(data.product_name);
+	    $('#product_id').html('UZ' + data.product_id);
+	    $('#product_price').html(data.product_price + ' Tsh');
+	    $('#prod-desc').html(data.product_description);
+	    $('#single_product_img').attr('src',ROOT_LIVE_URL+data.product_image_path);
+	});
+	var navigation='';
+	switch (cat_id) {
+	    case '1':
+		navigation += '<ul class="place">\n\
+       <li class="sort" onclick="get_product(1)">Computers</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(2)">Mobile phones</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(3)">Televisions</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(5)">Camera</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(4)">others</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\
+</ul>';
+		break;
+	    case '2':
+		navigation += '<ul class="place">\n\
+       <li class="sort" onclick="get_product(6)">Health</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(7)">IT</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(8)">Law</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\
+<li class="sort" onclick="get_product(9)">Business</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(10)">Novels</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\
+</ul>';
+		break;
+	    case '3':
+		navigation += '<ul class="place">\n\
+       <li class="sort" onclick="get_product(11)">Accessories</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(12)">Clothing</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(13)">Shoes</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(4)">others</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\
+</ul>';
+		break;
+	    case '4':
+		navigation += '<ul class="place">\n\
+       <li class="sort" onclick="get_product(14)">Accessories</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(15)">Clothing</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(17)">Shoes</li>\n\
+<li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\<li class="sort" onclick="get_product(16)">others</li><li class="by"><img src="assets/img/do.png" alt=""></li><span class="clearfix"></span>\n\
+</ul>';
+		break;
+	    default:
+		break;
+	}
+	$('#navigation_tabs_single').html(navigation);
+
+    };
+    singleView();
+</script>
+
+<div class="clearfix"></div>

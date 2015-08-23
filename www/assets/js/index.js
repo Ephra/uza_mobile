@@ -19,11 +19,15 @@
 
 
 var SITE_URL = 'http://uza.inetstz.com/index.php?';
+var ROOT_LIVE_URL = 'http://uza.inetstz.com/';
 var method_ = 'post';
+// initialize global variables that tends to exist in most pages here
 var user = '';
 var name = '';
 var cat_id = '';
+var product_id = '';
 var param = [];
+//start default app functions
 var app = {
     // Application Constructor
     initialize: function () {
@@ -61,6 +65,10 @@ uza = {
      * @param {type} callback
      * @returns {undefined}
      */
+    init: function () {
+	$(".megamenu").megamenu();
+	this.loadPage('body.html');
+    },
     get_remote: function (param, callback, method_) {
 	window.method_ = (typeof method_ === "undefined") ? 'get' : method_;
 	window.param = (typeof param === "undefined") ? [] : param;
@@ -86,8 +94,9 @@ uza = {
 	//NProgress.start();
 	var div = '.body_content';
 	window.param = (typeof param === "undefined") ? null : param;
-	window.cat_id = (typeof param ==='undefined') ? null : param.cat_id;
-	window.name = (typeof param ==='undefined')  ? null : param.name;
+	window.cat_id = (typeof param === 'undefined') ? null : param.cat_id;
+	window.name = (typeof param === 'undefined') ? null : param.name;
+	window.product_id = (typeof param === 'undefined') ? null : param.product_id;
 	$.ajax({
 	    url: url,
 	    dataType: 'html',
@@ -119,19 +128,19 @@ uza = {
     },
     hash: function () {
 	//$(window).hashchange();
-	
-	var q = window.location.hash.substring(1);
-	if (q !== '') {
-	    this.loadPage(q + '.html');
-	}else{
-	   //  this.loadPage('body.html');
-	}
-	$(window).on('hashchange', function () {
-	    if (location.hash !== '') {
-		var q = window.location.hash.substring(1);
-		this.loadPage(q + '.html');
-	    }
-	});
+
+//	var q = window.location.hash.substring(1);
+//	if (q !== '') {
+//	    this.loadPage(q + '.html');
+//	} else {
+//	    this.loadPage('body.html');
+//	}
+//	$(window).on('hashchange', function () {
+//	    if (location.hash !== '') {
+//		var q = window.location.hash.substring(1);
+//		this.loadPage(q + '.html');
+//	    }
+//	});
 
     },
     /**
@@ -190,21 +199,80 @@ uza = {
 	this.setCookie('user', '', 0);
 	window.location.reload();
     },
-    addProduct: function (product_id) {
+    addProduct: function (product) {
 	//you will use cookies here, to store a product like 10min before expire
 	//this will be more effective as cookie will be stored as objects
 	//don't store data in a temporary div
-	var products_id = this.getCookie('product_id');
-	if (typeof (products_id) === 'undefined') {
+
+	var products = this.getCookie('product_id');
+	this.setCookie('product_id', product, 1);
+	//console.log(products);
+	if (typeof (products) === 'undefined' || products.length == '0') {
 	    //if product is not available
-	    this.setCookie('product_id', product_id, 1);
+	    this.setCookie('product_id', product, 1);
 	} else {
 	    //if product is available
-	    var product_ids = products_id + ',' + product_id;
-	    this.setCookie('product_id', product_ids, 1);
+	    var product_list = [products];
+	    //console.log(product_list);
+	    product_list.push(product);
+	    //alert(pd);
+	    console.log(product_list);
+	    //var pd = $.extend({},product,products_id);
+	    this.setCookie('product_id', product_list, 5);
 	}
+    },
+    saleOrder: function () {
+	var product_ids = '';
+	$('.cart-items').each(function () {
+	    product_ids += $(this).attr('data-id') + ',';
+	});
+	var quantity = '';
+	$('.quantity').each(function () {
+	    quantity += $(this).val() + ',';
+	});
+	user = this.getCookie('user');
+	if (user !== '') {
+	    var param = {
+		product_id: product_ids,
+		order_quantity: quantity,
+		pg: 'sales',
+		user_id: user.user_id,
+		method: 'client_order'
+	    }
+	    this.get_remote(param, function (data) {
+		console.log(data);
+	    });
+	} else {
+	    this.loadPage('modules/login/login.html');
+	}
+    },
+    emptyCart: function () {
+	this.setCookie('product_id', '', 0);
+	window.location.href = 'index.html';
+    },
+    find: function () {
+	//$('#find').click(function () {
+	// alert('search');
+	var search = $('#search').val();
+	//	alert(search);
+	var param = {search: search, pg: 'products', method: 'search_product'};
+	//  NProgress.start();
+	this.get_remote(param, function (data) {
+	    if (data.status === 1) {
+		var results = data;
+		uza.loadPage('modules/product/search_result.html',{param:results});
+		//NProgress.done();
+	    }
+	    else if (data.status === 0) {
+		$('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"').fadeOut(7000);
+
+		//   NProgress.done();
+	    }
+	});
+	//});
     }
 };
+uza.init();
 uza.hash();
 user = uza.getCookie('user');
 console.log(user);

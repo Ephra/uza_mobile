@@ -3,95 +3,33 @@
 <div class="cart_main">
     <div class="container">
 	<ol class="breadcrumb">
-	    <li><a href="men.html">Home</a></li>
+	    <li><a href="#body">Home</a></li>
 	    <li class="active">Cart</li>
 	</ol>			
-	<div class="cart-items">
-	    <h2>My Shopping Bag (2)</h2>
-	    <script>$(document).ready(function (c) {
-		    $('.close1').on('click', function (c) {
-			$('.cart-header').fadeOut('slow', function (c) {
-			    $('.cart-header').remove();
-			});
-		    });
-		});
-	    </script>
-	    <div class="cart-header">
-		<div class="close1"> </div>
-		<div class="cart-sec">
-		    <div class="cart-item cyc">
-			<img src="assets/img/ts4.jpg"/>
-		    </div>
-		    <div class="cart-item-info">
-			<h3>Mast & Harbour<span>Model No: 3578</span></h3>
-			<h4><span>Rs.  </span>1,500,000.00Tsh</h4>
-			<p class="qty">Qty ::</p>
-			<input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">
-		    </div>
-		    <div class="clearfix"></div>
-		    <div class="delivery">
-			<p>Service Charges:: 5000.00Tsh</p>							 
-		    </div>						
-		</div>
-	    </div>
-	    <script>$(document).ready(function (c) {
-		    $('.close2').on('click', function (c) {
-			$('.cart-header2').fadeOut('slow', function (c) {
-			    $('.cart-header2').remove();
-			});
-		    });
-		});
-	    </script>
-	    <div class="cart-header2">
-		<div class="close2"> </div>
-		<div class="cart-sec">
-		    <div class="cart-item">
-			<img src="assets/img/ts1.jpg"/>
-		    </div>
-		    <div class="cart-item-info">
-			<h3>Woolen Shrug<span>Model No: 8768</span></h3>
-			<h4>2,000,000.00<span>Tsh </span></h4>
-			<p class="qty">Qty ::</p>
-			<input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">
-		    </div>
-		    <div class="clearfix"></div>
-		    <div class="delivery">
-			<p>Service Charges:: 5,000.00Tsh</p>							
-		    </div>						
-		</div>
-	    </div>		
+	<div id="shop_items">
+	    
 	</div>
 
-	<div class="cart-total">
-	    <a class="continue" href="#">Continue to basket</a>
-	    <div class="price-details">
-		<h3>Price Details</h3>
-		<span>Total</span>
-		<span class="total">3,500,000.00</span>
-		<span>Discount</span>
-		<span class="total">---</span>
-		<span>Delivery Charges</span>
-		<span class="total">10,000.00</span>
-		<div class="clearfix"></div>				 
-	    </div>	
-	    <h4 class="last-price">TOTAL</h4>
-	    <span class="total final">4,500,000.00</span>
-	    <div class="clearfix"></div>
-	    <a class="order" href="#">Place Order</a>
-	    <div class="total-item">
-		<h3>OPTIONS</h3>
-		<h4>COUPONS</h4>
-		<a class="cpns" href="#">Apply Coupons</a>
-		<p><a href="#">Log In</a> to use accounts - linked coupons</p>
-	    </div>
+	<div class="cart-total" id="cart_total">
+	    
 	</div>
     </div>
 </div>
 <script type="text/javascript">
     sellProduct = function () {
 	var quantity = $('.simpleCart_quantity').text();
-	var products_id=$('.cart_link').attr('data-product-id');
-	alert(products_id);
+	var products_id = uza.getCookie('product_id');
+	var items='';
+	 var total_price=0;
+	 console.log(products_id);
+	$.each(products_id,function(i,val){
+	    //list your products here for selling
+	    items+='<div class="cart-items" data-id="'+val.product_id+'"><h2>'+val.name+'</h2> <div class="cart-header"><div class="close1"> </div><div class="cart-sec"> <div class="cart-item cyc"><img src="'+val.url+'"/> </div><div class="cart-item-info"><h3>'+val.name+'<span></span></h3><h4><span>Tsh.  </span>'+val.price+'</h4><p class="qty">Qty ::'+val.quantity+'</p><input min="1" type="number" id="quantity" name="quantity" value="'+val.quantity+'" class="quantity form-control input-small"> </div><div class="clearfix"></div> <div class="delivery"></div></div> </div></div>';
+	    total_price=total_price+parseInt(val.price);
+	});
+	var cart_total='<div class="price-details"><h3>Price Details</h3><span>Delivery Charges</span><span class="total">0</span><div class="clearfix"></div> </div><h4 class="last-price">TOTAL</h4> <span class="total final">'+total_price+'</span><div class="clearfix"></div><a class="order" href="#" onclick="uza.saleOrder()">Place Order</a> ';
+	$('#cart_total').html(cart_total);
+	$('#shop_items').html(items);
     };
     sellProduct();
 </script>
