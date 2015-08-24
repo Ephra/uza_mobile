@@ -1,5 +1,7 @@
+
 <div class="product-model">	 
     <div class="container">
+
 	<ol class="breadcrumb">
 	    <li><a href="#" onclick="loadPage('body.html')">Home</a></li>
 	    <li class="active title_name"></li>
@@ -77,13 +79,13 @@
 			cat_id = sub_cat_id;
 		    }
 		    uza.get_remote({pg: 'products', method: 'get_product', sales_subcat_id: cat_id}, function (data) {
-			if (data.status == 1) {
+			if (data.status === 1) {
 			    //product exists
 			 
 			    var item = data.products;
 			    //console.log(item);
 			    $.each(item, function (i, val) {
-				products += '<a href="#" ><div class="product-grid love-grid"><div class="more-product"><span> </span></div><div class="product-img b-link-stripe b-animate-go  thickbox"><img src="'+ROOT_LIVE_URL+val.image_path+'" class="img-responsive" alt=""/><div class="b-wrapper"><h4 class="b-animate b-from-left  b-delay03">	<button class="btns" onclick="uza.loadPage(\'modules/product/single_product.html\',{product_id:\''+val.id+'\',cat_id:\''+cat_id+'\'})"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</button></h4></div></div> <div class="product-info simpleCart_shelfItem"><div class="product-info-cust prt_name"><h4>' + val.name + '</h4>  <p>' + val.description + '</p><span class="item_price">Tsh ' + val.price + '</span><input type="text" class="item_quantity" id="item'+val.id+'" value="1" /><input type="button" class="item_add items buy" data-id="' + val.id + '" onclick="uza.addProduct({product_id:\''+val.id+'\',name:\''+val.name+'\',price:\''+val.price+'\',cat_id:\''+cat_id+'\',description:\''+val.description+'\',quantity:$(\'#item'+val.id+'\').val(),url:\''+ROOT_LIVE_URL+val.image_path+'\'})"  value="Buy"></div><div class="clearfix"> </div> </div></div></a>';
+				products += '<a href="#" ><div class="product-grid love-grid"><div class="more-product"><span> </span></div><div class="product-img b-link-stripe b-animate-go  thickbox"><img src="'+ROOT_LIVE_URL+val.image_path+'" class="img-responsive" alt=""/><div class="b-wrapper"><h4 class="b-animate b-from-left  b-delay03">	<button class="btns" onclick="uza.loadPage(\'modules/product/single_product.html\',{product_id:\''+val.id+'\',cat_id:\''+cat_id+'\'})"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">tyyy</span>Quick View</button></h4></div></div> <div class="product-info simpleCart_shelfItem"><div class="product-info-cust prt_name"><h4>' + val.name + '</h4>  <p>' + val.description + '</p><span class="item_price">Tsh ' + val.price + '</span><input type="text" class="item_quantity" id="item'+val.id+'" value="1" /><input type="button" class="item_add items buy" data-id="' + val.id + '" onclick="uza.addProduct({product_id:\''+val.id+'\',name:\''+val.name+'\',price:\''+val.price+'\',cat_id:\''+cat_id+'\',description:\''+val.description+'\',quantity:$(\'#item'+val.id+'\').val(),url:\''+ROOT_LIVE_URL+val.image_path+'\'})"  value="Buy"><span><button class="btn btn-success"  id="like_button" name="like_button"  style="margin-bottom: 20px;" onmousedown="like('+val.id+')">Like</button></span><div class="clearfix"> </div> </div></div></a>';
 			    });
 
 			} else {
@@ -97,4 +99,34 @@
 
 	</div>
     </div>
-</div>	
+</div>
+<script  type='text/javascript'>
+			
+		like = function (product_id) {
+
+			var param = {
+			    pg: 'products',
+			    method: 'like_product',
+			    product_id: product_id,
+			    user_id: 1
+			    
+			};
+			NProgress.start();
+			uza.get_remote(param, function (data) {
+			    console.log(data);
+			    if (data.status === 1) {
+				$('#ajax_ad_results').html('<div class="alert alert-success">success</div>').fadeOut(3000);
+				NProgress.done();
+			
+			    }
+			    else if (data.status === 0) {
+				$('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
+				NProgress.done();
+			    }
+			});
+		   
+		};
+	
+		
+    </script>
+
