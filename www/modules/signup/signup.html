@@ -1,343 +1,131 @@
 
-<!DOCTYPE HTML>
-<html>
+<div class="login_sec">
+    <div class="container">
+	<ol class="breadcrumb">
+	    <li><a href="javascript:void(0)" onmousedown="loadPage('index.html')">Home</a></li>
+	    <li class="active">Create an Account</li>
+	</ol>
+	<h2>Create an Account</h2>
+	<div class="col-md-6 log">			 
+	    <p>Welcome, please enter the following to continue.</p>
+	    <p>If you have previously Login with us, <span>click here</span></p>
+	    <form id ="registration_form">
 
-    <div class="login_sec">
-        <div class="container">
-            <ol class="breadcrumb">
+		<div >
 
-                <li><a href="javascript:void(0)" onmousedown="loadPage('index.html')">Home</a></li>
+		    <input placeholder="First name:"  type="text"  id="first_name" name="first_name" >
+		    <label id="errorPromptName"></label>
+		</div>
 
-                <li class="active">Create an Account</li>
-            </ol>
-            <h2>Create an Account</h2>
-            <div class="col-md-6 log">			 
-                <p>Welcome, please enter the following to continue.</p>
-                <p>If you have previously Login with us, <span>click here</span></p>
-           <form id ="registration_form">
-              
-                    <div >
+		<div >
 
-                        <input placeholder="First name:"  type="text"  id="first_name" name="first_name" >
-                        <label id="errorPromptName"></label>
-                    </div>
-
-                    <div >
-
-                        <input placeholder="Middle name:"  type="text"  id="middle_name" name="middle_name" >
+		    <input placeholder="Middle name:"  type="text"  id="middle_name" name="middle_name" >
 
 
-                    </div>
-                    <div >
-                        <input placeholder="Last name:" type="text"   id="last_name" name="last_name" >
-
-   
-                        <label id='errorPromptLastName'></label>
-
-                    </div>
-                    <div>
-
-               
-                        <input placeholder="Email" type="text"  name="email" id="email" >
-
-                        <label id='errorPromptEmail'></label>
-
-                    </div>
-                    <div >
+		</div>
+		<div >
+		    <input placeholder="Last name:" type="text"   id="last_name" name="last_name" >
 
 
-                        <input placeholder="Password" type="password"  name="password" id="password" >
-                        <label id="errorPromptPassword"></label>
+		    <label id='errorPromptLastName'></label>
 
-                    </div>
-               <div>
-                        <input placeholder="Comfirm Password" type="password"  name="confirm_password" id="confirm_password" >
-                        <label id="errorPromptPassword"></label>
-
-                   </div>	
-
-                    <div>
-
-                        <input placeholder="Phone Number:" type="text"  name="phone_number" id="phone_number">
-
-                        <label id="errorPromptPhone"></label>
-
-                    </div>
-
-                    <div >
-
-                        <label>
-                            <input placeholder="location" type="text"  name="location" id="location">
-                            <label id="errorPromptLocation"></label>
-                        </label>
-                    </div>
-                    <button class="btn btn-success"   id="register_button" name="register_button" style="margin-bottom: 30px;">Register</button>
-
-</form>		 
-            </div>
-
-            
-                    <!-- /Form -->
-           
-            <div class="clearfix"></div>
-        </div>
-
-        <!---->
-  <!--<div class="footer-content">
-            <div class="container">
-            </div>
-  -->
-     
-        <script src="./assets/js/index.js"></script>
-
-        <script  type='text/javascript'>
+		</div>
+		<div>
 
 
+		    <input placeholder="Email" type="text"  name="email" id="email" >
 
-                   /** var form = $('#registration_form');
-                    jQuery(document).ready(function () {
-                        validatordefault.init();
-                    });
-                    form.validate({
-                    rules: {
-                    first_name: {
-                    minlength: 3,
-                            required: true
-                    },
-                            middle_name: {
-                            minlength: 3,
-                                    required: true
-                            },
-                            last_name: {
-                            minlength: 3,
-                                    required: true
-                            },
-                            email: {
-                                  minlength: 3,
-                                    required: true
-                                    email: true
-                                }
-                                    password: {
-                                    minlength: 6,
-                                            required: true
-                                    },
-                                    phone_number: {
-                                    minlength: 10,
-                                            required: true
-                                            number: true
-                                    },
-                                    location: {
-                                    minlength: 3,
-                                            required: true
-                                    },
-                            },
-                            messages: {
+		    <label id='errorPromptEmail'></label>
 
-                            first_name: {
-                            minlength: "validate",
-                                    required: "validate"
-                            },
-                                    last_name: {
-                                    minlength: 3,
-                                            required: true
-                                    },
-                                    email: {
-                                    minlength: 3,
-                                            required: true,
-                                            email:true
-                                    },
-                                    password: {
-                                    minlength: 6,
-                                            required: true
-                                    },
-                                    phone_number: {
-                                    minlength: 10,
-                                            required: true,
-                                            number : true
-                                    },
-                                    location: {
-                                    minlength: 3,
-                                            required: true
-                                    }
-
-                            },
-                            submitHandler: function () {
-                                errorHandler.hide();
-                                var first_name = $('#first_name').val();
-                                var middle_name = $('#middle_name').val();
-                                var last_name = $('#last_name').val();
-                                var email = $('#email').val();
-                                var password = $('#password').val();
-                                var phone_number = $('#phone_number').val();
-                                var location = $('#location').val();
-                                var param = {
-                                    pg: 'register',
-                                    method: 'register_client',
-                                    first_name: first_name,
-                                    middle_name: middle_name,
-                                    last_name: last_name,
-                                    email: email,
-                                    password: password,
-                                    phone_number: phone_number,
-                                    location: location
-                                };
-                                NProgress.start();
-                                uza.get_remote(param, function (data) {
-                                    console.log(data);
-                                    if (data.status === 1) {
-                                        $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
-
-                                        NProgress.done();
-                                        loadPage('modules/login/login.html');
-                                    }
-                                    else if (data.status === 0) {
-                                        $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
-
-                                        NProgress.done();
-                                    }
-                                });
-                            }}
-                    });
-    
-                    **/
-                             register = function () {
-                                
-                                $('#register_button').mousedown(function () {
-                                    
-                              
-                                    var first_name = $('#first_name').val();
-                                    var middle_name = $('#middle_name').val();
-                                    var last_name = $('#last_name').val();
-                                    var email = $('#email').val();
-                                    var password = $('#password').val();
-                                    var phone_number = $('#phone_number').val();
-                                    var location = $('#location').val();
-                                    var param = {
-                                        pg: 'register',
-                                        method: 'register_client',
-                                        first_name: first_name,
-                                        middle_name: middle_name,
-                                        last_name: last_name,
-                                        email: email,
-                                        password: password,
-                                        phone_number: phone_number,
-                                        location: location
-                                    };
-                                    NProgress.start();
-                                    uza.get_remote(param, function (data) {
-                                       
-                                        console.log(data);
-                                        if (data.status === 1) {
-                                            $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
-
-                                            NProgress.done();
-                                            loadPage('modules/login/login.html');
-                                        }
-                                        else if (data.status === 0) {
-                                            $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
-
-                                            NProgress.done();
-                                        }
-                                    });
-                                });
-                            };
-                    $(document).ready(register);
-                    
-                   
-                   
-=======
-
-                    
-
-                    <button class="btn btn-success" type="button"   id="register_button" name="btnRegister" style="margin-bottom: 30px;">Register</button>
+		</div>
+		<div >
 
 
-                </form>				 
-            </div>
+		    <input placeholder="Password" type="password"  name="password" id="password" >
+		    <label id="errorPromptPassword"></label>
 
-            <div class="right col-md-6">
-                <h2>existing user</h2>
-                <div class="registration_form">
-                    <!-- Form -->
+		</div>
+		<div>
+		    <input placeholder="Comfirm Password" type="password"  name="confirm_password" id="confirm_password" >
+		    <label id="errorPromptPassword"></label>
 
-                    <form id="registration_form" action="categories/account/manage_account.html" method="post">
-                        <div>
-                            <label>
-                                <input placeholder="email:" onkeyup="validateEmail()" type="email" tabindex="3" required>
-                                <label id="errorPromptEmail"></label>
+		</div>	
 
-                        </div>
-                        <div>
-                            <label>
+		<div>
 
-                                <input placeholder="password" onkeyup="validatePassword()" type="password" tabindex="4" required>
-                                <label id="errorPromptPassword"></label>
-                                =
-                            </label>
-                        </div>						
-                        <div>
-                            <input type="submit" value="sign in" id="register-submit">
-                        </div>
-                        <div class="forget">
-                            <a href="#">forgot your password</a>
-                        </div>
-                    </form>
-                    <!-- /Form -->
-                </div>
+		    <input placeholder="Phone Number:" type="text"  name="phone_number" id="phone_number">
 
-            </div>
-            <div class="clearfix"></div>
-        </div>
+		    <label id="errorPromptPhone"></label>
 
-        <!---->
-        <div class="footer-content">
-            <div class="container">
-            </div>
-        </div>
-        <script src="./assets/js/index.js"></script>
+		</div>
 
-        <script  type='text/javascript'>
-                                       
-                            register = function () {
+		<div >
 
-                                                                        $('#register_button').mousedown(function () {
+		    <label>
+			<input placeholder="location" type="text"  name="location" id="location">
+			<label id="errorPromptLocation"></label>
+		    </label>
+		</div>
+		<button class="btn btn-success"   id="register_button" name="register_button" style="margin-bottom: 30px;">Register</button>
 
-                                                                        var fname = $('#fname').val();
-                                                                        var lname = $('#lname').val();
-                                                                        var email = $('#email').val();
-                                                                        var password = $('#password').val();
-                                                                        var phone = $('#phone').val();
-                                                                        var location = $('#location').val();
-                                                                       
-                                                                        var param = {
-                                                                        pg: 'register',
-                                                                                method: 'register_client',
-                                                                                fname: fname,
-                                                                                lname: lname,
-                                                                                email: email,
-                                                                                password: password,
-                                                                                phone: phone,
-                                                                                location: location,
-                                                                                
-                                                                        }
-                                                                NProgress.start();
-                                                                        uza.get_remote(param, function (data) {
-                                                                        console.log(data);
-                                                                                if (data.status === 1) {
-                                                                        $('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
-                                                                                NProgress.done();
-                                                                                loadPage('modules/login/login.html');
-                                                                        }
-                                                                        else if (data.status === 0) {
-                                                                        $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
-                                                                                NProgress.done();
-                                                                        }
-                                                                        });
-                                                                });
-                                                                };
-                                                                        register();
->>>>>>> 89d455a702e43551ba9e123bcc37f27a07e848a9
-        </script>
+	    </form>		 
+	</div>
+
+
+	<!-- /Form -->
+
+	<div class="clearfix"></div>
+    </div>
+
+    <!---->
+    <!--<div class="footer-content">
+	      <div class="container">
+	      </div>
+    -->
+
+    <script src="./assets/js/index.js"></script>
+
+    <script  type='text/javascript'>
+		register = function () {
+
+		    $('#register_button').mousedown(function () {
+
+			var first_name = $('#first_name').val();
+			var middle_name = $('#middle_name').val();
+			var last_name = $('#last_name').val();
+			var email = $('#email').val();
+			var password = $('#password').val();
+			var phone_number = $('#phone_number').val();
+			var location = $('#location').val();
+
+			var param = {
+			    pg: 'register',
+			    method: 'register_client',
+			    first_name: first_name,
+			    middle_name: middle_name,
+			    last_name: last_name,
+			    email: email,
+			    password: password,
+			    phone_number: phone_number,
+			    location: location,
+			}
+			NProgress.start();
+			uza.get_remote(param, function (data) {
+			    console.log(data);
+			    if (data.status === 1) {
+				$('#ajax_ad_results').html('<div class="alert alert-success">Successfully Registered!</div>').fadeOut(3000);
+				NProgress.done();
+				loadPage('modules/login/login.html');
+			    }
+			    else if (data.status === 0) {
+				$('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"');
+				NProgress.done();
+			    }
+			});
+		    });
+		};
+		register();
+    </script>
 
 
 

@@ -18,14 +18,16 @@
  */
 
 
-//var SITE_URL = 'http://uza_application/index.php?';
 var SITE_URL = 'http://uza.inetstz.com/index.php?';
+var ROOT_LIVE_URL = 'http://uza.inetstz.com/';
 var method_ = 'post';
+// initialize global variables that tends to exist in most pages here
 var user = '';
-var name='';
-var cat_id='';
+var name = '';
+var cat_id = '';
+var product_id = '';
 var param = [];
-
+//start default app functions
 var app = {
     // Application Constructor
     initialize: function () {
@@ -37,7 +39,6 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
 	document.addEventListener('deviceready', this.onDeviceReady, false);
-
     },
     // deviceready Event Handler
     //
@@ -51,16 +52,12 @@ var app = {
 	var parentElement = document.getElementById(id);
 	var listeningElement = parentElement.querySelector('.listening');
 	var receivedElement = parentElement.querySelector('.received');
-
 	listeningElement.setAttribute('style', 'display:none;');
 	receivedElement.setAttribute('style', 'display:block;');
-
 	console.log('Received Event: ' + id);
     }
 };
-
 app.initialize();
-
 uza = {
     /**
      * 
@@ -68,10 +65,13 @@ uza = {
      * @param {type} callback
      * @returns {undefined}
      */
+    init: function () {
+	$(".megamenu").megamenu();
+	this.loadPage('body.html');
+    },
     get_remote: function (param, callback, method_) {
 	window.method_ = (typeof method_ === "undefined") ? 'get' : method_;
 	window.param = (typeof param === "undefined") ? [] : param;
-        
 	$.ajax({
 	    cache: true,
 	    // url: SITE_URL + $.param(param),
@@ -91,11 +91,12 @@ uza = {
      * @returns {undefined}
      */
     loadPage: function (url, param) {
-	NProgress.start();
-	var div='.body_content';
+	//NProgress.start();
+	var div = '.body_content';
 	window.param = (typeof param === "undefined") ? null : param;
-	window.cat_id = (typeof cat_id === "undefined") ? null : param.cat_id;
-	window.name = (typeof name === "undefined") ? null : param.name;
+	window.cat_id = (typeof param === 'undefined') ? null : param.cat_id;
+	window.name = (typeof param === 'undefined') ? null : param.name;
+	window.product_id = (typeof param === 'undefined') ? null : param.product_id;
 	$.ajax({
 	    url: url,
 	    dataType: 'html',
@@ -104,12 +105,12 @@ uza = {
 	    cache: true,
 	    success: function (data, textStatus, XMLHttpRequest) {
 		/*NProgress.done();*/
-
-		$(div).off();  /*Calling .off() with no arguments removes all handlers attached to the elements.*/
-		$(div).empty();  /*clearing the content of the div*/
+		$(div).off(); /*Calling .off() with no arguments removes all handlers attached to the elements.*/
+		$(div).empty(); /*clearing the content of the div*/
 		$(div).html(data);
-		NProgress.done();
+		//NProgress.done();
 //let us translate that part that comes with ajax
+//alert(data);
 	    },
 	    error: function (xhr, textStatus, errorThrown) {
 		/*Owden*/
@@ -125,19 +126,32 @@ uza = {
 	    }
 	});
     },
+    hash: function () {
+	//$(window).hashchange();
+
+//	var q = window.location.hash.substring(1);
+//	if (q !== '') {
+//	    this.loadPage(q + '.html');
+//	} else {
+//	    this.loadPage('body.html');
+//	}
+//	$(window).on('hashchange', function () {
+//	    if (location.hash !== '') {
+//		var q = window.location.hash.substring(1);
+//		this.loadPage(q + '.html');
+//	    }
+//	});
+
+    },
     /**
      * 
-     * @param {type} cname
-     * @param {type} cvalue
-     * @param {type} exdays
+     * @param {String} cname: Name of that cookie
+     * @param {String} cvalue: Cookie value to be stored
+     * @param {integer} exdays: Cookie expired date
      * @returns {undefined}
      */
-    setCookie: function (cname, cvalue, exdays) {
-	var d = new Date();
-	/* 1= you set cookie to expire for 10 min*/
-	d.setTime(d.getTime() + (exdays * 0.1 * 60 * 60 * 1000));
-	var expires = "expires=" + d.toUTCString();
-	document.cookie = cname + "=" + cvalue + "; " + expires;
+    setCookie: function (cname, value, exdays) {
+	window.localStorage.setItem(cname, JSON.stringify(value));
     },
     /**
      * 
@@ -145,16 +159,7 @@ uza = {
      * @returns {String}
      */
     getCookie: function (cname) {
-	var name = cname + "=";
-	var ca = document.cookie.split(';');
-	for (var i = 0; i < ca.length; i++) {
-	    var c = ca[i];
-	    while (c.charAt(0) == ' ')
-		c = c.substring(1);
-	    if (c.indexOf(name) == 0)
-		return c.substring(name.length, c.length);
-	}
-	return "";
+	return JSON.parse(window.localStorage.getItem(cname));
     },
     /*
      * 
@@ -165,23 +170,111 @@ uza = {
 	    'pg': 'landing',
 	    'method': 'get_navigation'
 	};
-	this.get_remote(pages, function (data) {
-	    // console.log(data);
-	    $.each(data, function (i, val) {
-		//console.log(val);
-		var name = val.sales_cat_name.replace(/'/g, "\\'");
-		if ($('#' + val.sales_cat_id).length == 0) {
-		    $('#nav_menu').append('<li id="' + val.sales_cat_id + '" class="active grid"><a class="color1" href="javascript:;" onmousedown="uza.loadPage(\'modules/product/product.html\',{cat_id:\'' + val.sales_cat_id + '\',type:\'product\',name:\''+ name+'\'})">' + val.sales_cat_name + '</a></li>');
+	/**this.get_remote(pages, function (data) {
+	 // console.log(data);
+	 $.each(data, function (i, val) {
+	 //console.log(val);
+	 var name = val.sales_cat_name.replace(/'/g, "\\'");
+	 if ($('#' + val.sales_cat_id).length == 0) {
+	 $('#nav_menu').append('<li id="' + val.sales_cat_id + '" class="active grid"><a class="color1" href="javascript:;" onmousedown="uza.loadPage(\'modules/product/product.html\',{cat_id:\'' + val.sales_cat_id + '\',type:\'product\',name:\''+ name+'\'})">' + val.sales_cat_name + '</a></li>');
+	 }
+	 });
+	 }); */
+    },
+    logout: function () {
+	this.setCookie('user', '', 0);
+	window.location.reload();
+    },
+    addProduct: function (product) {
+	//you will use cookies here, to store a product like 10min before expire
+	//this will be more effective as cookie will be stored as objects
+	//don't store data in a temporary div
 
-		}
-	    });
+	var products = this.getCookie('product_id');
+	//this.setCookie('product_id', product, 1);
+	//console.log(products);
+	if (typeof (products) === 'undefined') {
+	    //if product is not available
+	    this.setCookie('product_id', product, 1);
+	} else {
+	   // var data = [];
+	    var product_list = [];
+// ...
+	    var i = products.length;
+	    product[i + 1] = product;
+// ...
+	    var tempData = [];
+
+	   // tempData.push(data);
+	    product_list.push(product);
+
+	    //data = tempData;
+	    console.log(product_list);
+
+	    //var product_list = [products];
+	    //console.log(product_list);
+	    //var p = product_list.concat([product]);
+	    //alert(pd);
+	    console.log(p);
+	    //var pd = $.extend({},product,products_id);
+	    this.setCookie('product_id', p, 5);
+	}
+    },
+    saleOrder: function () {
+	var product_ids = '';
+	$('.cart-items').each(function () {
+	    product_ids += $(this).attr('data-id') + ',';
 	});
+	var quantity = '';
+	$('.quantity').each(function () {
+	    quantity += $(this).val() + ',';
+	});
+	user = this.getCookie('user');
+	if (user !== '') {
+	    var param = {
+		product_id: product_ids,
+		order_quantity: quantity,
+		pg: 'sales',
+		user_id: user.user_id,
+		method: 'client_order'
+	    }
+	    this.get_remote(param, function (data) {
+		console.log(data);
+	    });
+	} else {
+	    this.loadPage('modules/login/login.html');
+	}
+    },
+    emptyCart: function () {
+	this.setCookie('product_id', '', 0);
+	window.location.href = 'index.html';
+    },
+    find: function () {
+	//$('#find').click(function () {
+	// alert('search');
+	var search = $('#search').val();
+	//	alert(search);
+	var param = {search: search, pg: 'products', method: 'search_product'};
+	//  NProgress.start();
+	this.get_remote(param, function (data) {
+	    if (data.status === 1) {
+		var results = data;
+		uza.loadPage('modules/product/search_result.html', {param: results});
+		//NProgress.done();
+	    }
+	    else if (data.status === 0) {
+		$('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"').fadeOut(7000);
+
+		//   NProgress.done();
+	    }
+	});
+	//});
     }
 };
+uza.init();
+uza.hash();
 user = uza.getCookie('user');
 //uza.getNavigationPages();
-
-
 /**
  * how to call it
  */

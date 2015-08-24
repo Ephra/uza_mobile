@@ -1,10 +1,11 @@
 
 
+
 <div class="login_sec">
 
     <div class="container">
         <ol class="breadcrumb">
-            <li><a href="javascript:void(0)" onmousedown="loadPage('')">Home</a></li>
+            <li><a href="javascript:void(0)" onmousedown="loadPage('body.html')">Home</a></li>
             <li class="active">Login</li>
         </ol>
         <h2>Login</h2>
@@ -33,7 +34,7 @@
         <div class="col-md-6 login-right">
             <h3>NEW REGISTRATION</h3>
             <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-            <a class="acount-btn" href="javascript:void(0)" onmousedown="loadPage('././modules/signup/signup.html')">Create an Account</a>
+            <a class="acount-btn" href="javascript:void(0)" onmousedown="loadPage('modules/signup/signup.html')">Create an Account</a>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -44,39 +45,30 @@
     <div class="container">
     </div>
 </div>
-
-
-<script src="./assets/js/index.js"></script>
-<script src="js/form_validation.js"></script>
-
-
 <script  type='text/javascript'>
-
-                        login = function () {
-
-                            $('#login_button').mousedown(function () {
-                                var email = $('#email').val();
-                                var password = $('#password').val();
-                                var param = {email: email, password: password, pg: 'login', method: 'authenticate'};
-                                NProgress.start();
-                                uza.get_remote(param, function (data) {
-
-                                    console.log(data);
-                                    if (data.status === 1) {
-                                        console.log(data);
-
-                                        loadPage('modules/login/home.html');
-                                        NProgress.done();
-                                    }
-                                    else if (data.status === 0) {
-                                        $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"').fadeOut(7000);
-
-                                        NProgress.done();
-                                    }
-                                });
-                            });
-                        };
-                        login();
+    login = function () {
+	$('#login_button').mousedown(function () {
+	    var email = $('#email').val();
+	    var password = $('#password').val();
+	    var param = {email: email, password: password, pg: 'login', method: 'authenticate'};
+	    NProgress.start();
+	    uza.get_remote(param, function (data) {
+		if (data.status === 1) {
+		    console.log(data);
+		    // this user is successfull login
+		    //just store the user information in a local db 
+		    uza.setCookie('user', data.user, 30);
+		    NProgress.done();
+		    window.location.reload();
+		}
+		else if (data.status === 0) {
+		    $('#ajax_ad_results').html('<div class="alert alert-danger>' + data.message + '</div>"').fadeOut(7000);
+		    NProgress.done();
+		}
+	    });
+	});
+    };
+    login();
 </script>
 
 

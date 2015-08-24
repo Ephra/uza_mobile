@@ -949,7 +949,7 @@ ul.dropdown-menu1 li a:hover{
 /*--single--*/
 .single_left{
 	float:left;
-	width:40%;
+	width: 2em;
 	margin-right:5%;
 }
 .single-right{
