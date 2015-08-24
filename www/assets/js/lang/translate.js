@@ -1,11 +1,12 @@
 
 var initial;
 var controller;
-var div_info = '.container';
+var div_info = '.body';
 // begin
+var l=[];
 
 function begin_translation(pg, default_div) {
-    var def_p;
+    var def_p='.body';
     // check_key(pg);
     if (pg == undefined) {
 	var url = window.location.href;
@@ -17,11 +18,9 @@ function begin_translation(pg, default_div) {
     }
     // we have to store the initial somewhere so we can use different approach
 
-    if (default_div == undefined) {
-	def_p = 'body';
-    } else {
-	def_p = default_div;
-    }
+
+    def_p = '.body';
+
     var num = 1;
     $(def_p + " > *").each(function () {
 	createNode(this);
@@ -58,6 +57,7 @@ function get_lang_Cookie(cname) {
 
 var lang_cookie = get_lang_Cookie('lang');
 
+var lang_cookie ='en';
 
 function translate(a) {
     if (lang_cookie === 'sw' || a === 'sw') {
@@ -86,16 +86,16 @@ function placeholder() {
 	var key = $(this).attr('key');
 
 	if (typeof val !== undefined) {
-	   // if (l[key] === undefined) {
-	//	$(this).attr("placeholder", l[key] + ' key no=' + key);
-	   // } else {
-		$(this).attr("placeholder", l[key]);
-	   // }
-	}else{
+	    // if (l[key] === undefined) {
+	    //	$(this).attr("placeholder", l[key] + ' key no=' + key);
+	    // } else {
+	    $(this).attr("placeholder", l[key]);
+	    // }
+	} else {
 	    $(this).attr("placeholder", '');
 	}
-	if(val=='Search'){
-	    $(this).attr("placeholder",'Tafuta');
+	if (val == 'Search') {
+	    $(this).attr("placeholder", 'Tafuta');
 	}
     });
 }
@@ -152,6 +152,7 @@ function addText(element) {
 	if (tagname !== 'td' && oneclass !== 'notranslate' && oneclass !== '') {
 	    $(tagname + '.' + oneclass).addClass('trl');
 	}
+	
 	if (oneclass === 'notranslate') {
 	    // $('.dataTables_info').removeClass('trl').removeAttr('key');
 	}

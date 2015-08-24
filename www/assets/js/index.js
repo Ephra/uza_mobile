@@ -151,12 +151,7 @@ uza = {
      * @returns {undefined}
      */
     setCookie: function (cname, value, exdays) {
-	var d = new Date();
-	/* 1= you set cookie to expire for 10 min*/
-	var cvalue = JSON.stringify(value); // we force only json values to be stored
-	d.setTime(d.getTime() + (exdays * 0.1 * 60 * 60 * 1000));
-	var expires = "expires=" + d.toUTCString();
-	document.cookie = cname + "=" + cvalue + "; " + expires;
+	window.localStorage.setItem(cname, JSON.stringify(value));
     },
     /**
      * 
@@ -164,16 +159,7 @@ uza = {
      * @returns {String}
      */
     getCookie: function (cname) {
-	var name = cname + "=";
-	var ca = document.cookie.split(';');
-	for (var i = 0; i < ca.length; i++) {
-	    var c = ca[i];
-	    while (c.charAt(0) == ' ')
-		c = c.substring(1);
-	    if (c.indexOf(name) == 0)
-		return JSON.parse(c.substring(name.length, c.length));
-	}
-	return "";
+	return JSON.parse(window.localStorage.getItem(cname));
     },
     /*
      * 
@@ -205,20 +191,33 @@ uza = {
 	//don't store data in a temporary div
 
 	var products = this.getCookie('product_id');
-	this.setCookie('product_id', product, 1);
+	//this.setCookie('product_id', product, 1);
 	//console.log(products);
-	if (typeof (products) === 'undefined' || products.length == '0') {
+	if (typeof (products) === 'undefined') {
 	    //if product is not available
 	    this.setCookie('product_id', product, 1);
 	} else {
-	    //if product is available
-	    var product_list = [products];
-	    //console.log(product_list);
+	   // var data = [];
+	    var product_list = [];
+// ...
+	    var i = products.length;
+	    product[i + 1] = product;
+// ...
+	    var tempData = [];
+
+	   // tempData.push(data);
 	    product_list.push(product);
-	    //alert(pd);
+
+	    //data = tempData;
 	    console.log(product_list);
+
+	    //var product_list = [products];
+	    //console.log(product_list);
+	    //var p = product_list.concat([product]);
+	    //alert(pd);
+	    console.log(p);
 	    //var pd = $.extend({},product,products_id);
-	    this.setCookie('product_id', product_list, 5);
+	    this.setCookie('product_id', p, 5);
 	}
     },
     saleOrder: function () {
@@ -260,7 +259,7 @@ uza = {
 	this.get_remote(param, function (data) {
 	    if (data.status === 1) {
 		var results = data;
-		uza.loadPage('modules/product/search_result.html',{param:results});
+		uza.loadPage('modules/product/search_result.html', {param: results});
 		//NProgress.done();
 	    }
 	    else if (data.status === 0) {
@@ -275,10 +274,7 @@ uza = {
 uza.init();
 uza.hash();
 user = uza.getCookie('user');
-console.log(user);
 //uza.getNavigationPages();
-
-
 /**
  * how to call it
  */
